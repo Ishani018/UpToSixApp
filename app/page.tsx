@@ -120,12 +120,12 @@ export default function Home() {
       </section>
 
       {/* Try Apps FREE Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">
             Try the UptoSix Apps FREE!
           </h2>
-          <div className="flex flex-wrap justify-center items-start gap-8 md:gap-12">
+          <div className="flex flex-wrap justify-center items-start gap-10 md:gap-16">
             {/* App 1: UptoSix Phonics */}
             <a 
               href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
@@ -133,16 +133,16 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex flex-col items-center hover:scale-105 transition-transform"
             >
-              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
                 <Image 
                   src="/images/app-phonics.jpeg" 
                   alt="UptoSix Phonics App Icon" 
-                  width={128}
-                  height={128}
+                  width={160}
+                  height={160}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Phonics</p>
+              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Phonics</p>
             </a>
 
             {/* App 2: UptoSix Phonics PLUS */}
@@ -152,16 +152,16 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex flex-col items-center hover:scale-105 transition-transform"
             >
-              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
                 <Image 
                   src="/images/app-phonics-plus.jpeg" 
                   alt="UptoSix Phonics PLUS App Icon" 
-                  width={128}
-                  height={128}
+                  width={160}
+                  height={160}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Phonics PLUS</p>
+              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Phonics PLUS</p>
             </a>
 
             {/* App 3: UptoSix Letter Formation */}
@@ -171,16 +171,16 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex flex-col items-center hover:scale-105 transition-transform"
             >
-              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
                 <Image 
                   src="/images/app-letter-formation.jpeg" 
                   alt="UptoSix Letter Formation App Icon" 
-                  width={128}
-                  height={128}
+                  width={160}
+                  height={160}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Letter Formation</p>
+              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Letter Formation</p>
             </a>
 
             {/* App 4: UptoSix Spell Board */}
@@ -190,16 +190,16 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex flex-col items-center hover:scale-105 transition-transform"
             >
-              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
                 <Image 
                   src="/images/app-spell-board.jpeg" 
                   alt="UptoSix Spell Board App Icon" 
-                  width={128}
-                  height={128}
+                  width={160}
+                  height={160}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Spell Board</p>
+              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Spell Board</p>
             </a>
           </div>
         </div>
@@ -211,92 +211,22 @@ export default function Home() {
       {/* Testimonials Section */}
       <Testimonials />
 
+      {/* View All Apps Button */}
+      <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <a
+            href="https://play.google.com/store/apps/dev?id=9044915143269037579&hl=en_IN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+          >
+            View All UptoSix Apps on Google Play
+          </a>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <FAQ />
-
-      {/* Intro Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-orange-50 to-yellow-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-l-4 border-orange-500">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              <span className="font-bold text-orange-600">UNICEF reports</span> that nearly two-thirds of 10-year-olds are unable to read and comprehend a simple text. Over <span className="font-bold text-orange-600">600 million children and adolescents</span> worldwide cannot attain minimum proficiency levels in reading and mathematics, even though two-thirds of them are in school.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The Challenge</h2>
-            <div className="w-24 h-1 bg-red-500 mx-auto rounded"></div>
-          </div>
-          <div className="bg-red-50 rounded-2xl p-8 md:p-10 border-l-4 border-red-500">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              Learning any subject, whether math, science, art, or history, becomes difficult for a child who struggles to read and spell. Reading and writing difficulties hinder academic progress and lead to a lack of confidence.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The Solution Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-green-50 to-emerald-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Solution: Synthetic Phonics</h2>
-            <div className="w-24 h-1 bg-green-500 mx-auto rounded"></div>
-          </div>
-          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border-l-4 border-green-500">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-4">
-              Synthetic phonics is an effective method of teaching young children to read and spell. We have seen how quickly children learn to read and spell using synthetic phonics.
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed font-semibold text-green-700">
-              The ability to read and write independently instils confidence in children.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="apps" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-            Our Learning Apps
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-linear-to-br from-purple-400 to-pink-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <span className="text-3xl">📚</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3 text-center">UptoSix Phonics</h3>
-              <p className="text-white/90 text-center mb-4 font-medium">Foundation</p>
-              <p className="text-white/80 text-center text-sm">Ages 3-5</p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-linear-to-br from-blue-400 to-cyan-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <span className="text-3xl">🚀</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3 text-center">Phonics PLUS</h3>
-              <p className="text-white/90 text-center mb-4 font-medium">Advanced</p>
-              <p className="text-white/80 text-center text-sm">Ages 5+</p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-linear-to-br from-green-400 to-emerald-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <span className="text-3xl">✍️</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3 text-center">Letter Formation</h3>
-              <p className="text-white/90 text-center mb-4 font-medium">Handwriting</p>
-              <p className="text-white/80 text-center text-sm">Practice & Learn</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* About Company Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-blue-50 to-indigo-50">

@@ -1,13 +1,30 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const screenshots = [
+  '/images/example.jpg',
+  '/images/example1.jpg',
+  '/images/example2.jpg',
+  '/images/example3.jpg',
+];
 
 export default function AppShowcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextScreenshot = () => {
+    setCurrentIndex((prev) => (prev + 1) % screenshots.length);
+  };
+
+  const prevScreenshot = () => {
+    setCurrentIndex((prev) => (prev - 1 + screenshots.length) % screenshots.length);
+  };
 
   return (
     <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-indigo-900 via-blue-900 to-indigo-800 relative overflow-hidden">
@@ -28,18 +45,63 @@ export default function AppShowcase() {
                 <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
                   {/* Notch */}
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-10"></div>
-                  {/* Screen Content */}
+                  {/* Screen Content with Slideshow */}
                   <div className="w-full h-full relative">
-                    <Image 
-                      src="/images/example.jpg" 
-                      alt="UptoSix Phonics App Screenshot" 
-                      width={300}
-                      height={600}
-                      className="w-full h-full object-cover object-center"
-                      style={{ objectPosition: 'center 6%' }}
-                    />
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentIndex}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0"
+                      >
+                        <Image 
+                          src={screenshots[currentIndex]}
+                          alt={`UptoSix Phonics App Screenshot ${currentIndex + 1}`}
+                          fill
+                          className="object-cover object-center"
+                          style={{ objectPosition: '55% 30%' }}
+                          sizes="(max-width: 768px) 256px, 320px"
+                          priority={currentIndex === 0}
+                          unoptimized
+                        />
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
+              </div>
+              
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevScreenshot}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg hover:scale-110 transition-transform z-30"
+                aria-label="Previous screenshot"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextScreenshot}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg hover:scale-110 transition-transform z-30"
+                aria-label="Next screenshot"
+              >
+                <ChevronRight size={24} />
+              </button>
+              
+              {/* Dot Indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                {screenshots.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentIndex 
+                        ? 'bg-white w-6' 
+                        : 'bg-white/50 hover:bg-white/75'
+                    }`}
+                    aria-label={`Go to screenshot ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
@@ -47,16 +109,22 @@ export default function AppShowcase() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -top-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg font-semibold text-sm z-20"
+              className="absolute -top-4 -right-4 bg-green-500 text-white px-5 py-3 rounded-full shadow-xl font-semibold text-sm z-20 backdrop-blur-sm border-2 border-white/20"
             >
-              ✓ No Ads
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span>No Ads</span>
+              </div>
             </motion.div>
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -bottom-4 -left-4 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg font-semibold text-sm z-20"
+              className="absolute -bottom-4 -left-4 bg-blue-500 text-white px-5 py-3 rounded-full shadow-xl font-semibold text-sm z-20 backdrop-blur-sm border-2 border-white/20"
             >
-              🛡️ 100% Safe
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span>100% Safe</span>
+              </div>
             </motion.div>
           </motion.div>
 
