@@ -1,11 +1,83 @@
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import AppShowcase from '@/components/AppShowcase';
+import Testimonials from '@/components/Testimonials';
+import FAQ from '@/components/FAQ';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section id="home" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-400 via-blue-300 to-white">
-        <div className="max-w-7xl mx-auto">
+      <section id="home" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+        {/* Moving Blob Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Blue Blob - Hero gradient */}
+          <motion.div
+            className="absolute w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: [0, 200, 0, -160, 0],
+              y: [0, 100, 0, -120, 0],
+              scale: [1, 1.2, 0.8, 1.2, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{ top: '10%', left: '10%' }}
+          />
+          {/* Purple Blob - App Cards */}
+          <motion.div
+            className="absolute w-96 h-96 bg-purple-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: [0, -160, 0, 200, 0],
+              y: [0, 200, 0, -100, 0],
+              scale: [1, 0.8, 1.2, 0.8, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+            style={{ top: '50%', right: '10%' }}
+          />
+          {/* Orange Blob - Stats/Unicef section */}
+          <motion.div
+            className="absolute w-96 h-96 bg-orange-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: [0, 120, 0, -200, 0],
+              y: [0, -160, 0, 180, 0],
+              scale: [1, 1.2, 0.8, 1.2, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+            style={{ bottom: '10%', left: '30%' }}
+          />
+          {/* Green Blob - Solution section */}
+          <motion.div
+            className="absolute w-96 h-96 bg-green-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: [0, -180, 0, 140, 0],
+              y: [0, 150, 0, -140, 0],
+              scale: [1, 0.8, 1.2, 0.8, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.5,
+            }}
+            style={{ top: '30%', left: '50%' }}
+          />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center py-20 md:py-32">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Interactive Self-Learning<br />
@@ -18,11 +90,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
                 href="https://apps.apple.com/in/app/uptosix-phonics/id1617850099" 
-                target="_blank"
-                rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
                 className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-              >
-                <Image 
+          >
+            <Image
                   src="/images/apple-logo.jpg" 
                   alt="Apple Logo" 
                   width={28}
@@ -30,7 +102,7 @@ export default function Home() {
                   className="w-7 h-7"
                 />
                 Download on App Store
-              </a>
+          </a>
           <a
                 href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
             target="_blank"
@@ -133,8 +205,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* App Showcase Section */}
+      <AppShowcase />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* FAQ Section */}
+      <FAQ />
+
       {/* Intro Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-50 to-yellow-50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-orange-50 to-yellow-50">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-l-4 border-orange-500">
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
@@ -160,7 +241,7 @@ export default function Home() {
       </section>
 
       {/* The Solution Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-green-50 to-emerald-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Solution: Synthetic Phonics</h2>
@@ -185,7 +266,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+            <div className="bg-linear-to-br from-purple-400 to-pink-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
                 <span className="text-3xl">📚</span>
               </div>
@@ -195,7 +276,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+            <div className="bg-linear-to-br from-blue-400 to-cyan-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
                 <span className="text-3xl">🚀</span>
               </div>
@@ -205,7 +286,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+            <div className="bg-linear-to-br from-green-400 to-emerald-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
                 <span className="text-3xl">✍️</span>
               </div>
@@ -218,7 +299,7 @@ export default function Home() {
       </section>
 
       {/* About Company Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-blue-50 to-indigo-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About UptoSix Kids</h2>
@@ -237,7 +318,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Vision Card */}
-            <div className="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-linear-to-br from-purple-500 to-indigo-600 rounded-2xl p-8 text-white shadow-xl">
               <div className="text-4xl mb-4">🌍</div>
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
               <p className="text-white/90 leading-relaxed">
@@ -246,7 +327,7 @@ export default function Home() {
             </div>
 
             {/* Mission Card */}
-            <div className="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-linear-to-br from-blue-500 to-cyan-600 rounded-2xl p-8 text-white shadow-xl">
               <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-white/90 leading-relaxed">
@@ -255,7 +336,7 @@ export default function Home() {
             </div>
 
             {/* Philosophy Card */}
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-linear-to-br from-green-500 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
               <div className="text-4xl mb-4">💡</div>
               <h3 className="text-2xl font-bold mb-4">Our Philosophy</h3>
               <p className="text-white/90 leading-relaxed">
