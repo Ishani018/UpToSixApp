@@ -1,40 +1,75 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import AppShowcase from '@/components/AppShowcase';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
+import VideoGallery from '@/components/VideoGallery';
+import IPadShowcase from '@/components/IPadShowcase';
 
 export default function Home() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDesktop) return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 30;
+    const y = (clientY / innerHeight - 0.5) * 30;
+    setMousePosition({ x: -x, y: -y });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section id="home" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-        {/* Moving Blob Background */}
+      <section 
+        id="home" 
+        className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white"
+        onMouseMove={handleMouseMove}
+      >
+        {/* Moving Blob Background with Mouse Parallax */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Blue Blob - Hero gradient */}
           <motion.div
             className="absolute w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-20"
             animate={{
-              x: [0, 200, 0, -160, 0],
-              y: [0, 100, 0, -120, 0],
+              x: isDesktop ? [0, 200, 0, -160, 0].map(v => v + mousePosition.x) : [0, 200, 0, -160, 0],
+              y: isDesktop ? [0, 100, 0, -120, 0].map(v => v + mousePosition.y) : [0, 100, 0, -120, 0],
               scale: [1, 1.2, 0.8, 1.2, 1],
+            }}
+            style={{ 
+              top: '10%', 
+              left: '10%',
             }}
             transition={{
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            style={{ top: '10%', left: '10%' }}
           />
           {/* Purple Blob - App Cards */}
           <motion.div
             className="absolute w-96 h-96 bg-purple-400 rounded-full blur-3xl opacity-20"
             animate={{
-              x: [0, -160, 0, 200, 0],
-              y: [0, 200, 0, -100, 0],
+              x: isDesktop ? [0, -160, 0, 200, 0].map(v => v + mousePosition.x * 0.8) : [0, -160, 0, 200, 0],
+              y: isDesktop ? [0, 200, 0, -100, 0].map(v => v + mousePosition.y * 0.8) : [0, 200, 0, -100, 0],
               scale: [1, 0.8, 1.2, 0.8, 1],
+            }}
+            style={{ 
+              top: '50%', 
+              right: '10%',
             }}
             transition={{
               duration: 4,
@@ -42,15 +77,18 @@ export default function Home() {
               ease: "easeInOut",
               delay: 0.5,
             }}
-            style={{ top: '50%', right: '10%' }}
           />
           {/* Orange Blob - Stats/Unicef section */}
           <motion.div
             className="absolute w-96 h-96 bg-orange-400 rounded-full blur-3xl opacity-20"
             animate={{
-              x: [0, 120, 0, -200, 0],
-              y: [0, -160, 0, 180, 0],
+              x: isDesktop ? [0, 120, 0, -200, 0].map(v => v + mousePosition.x * 0.6) : [0, 120, 0, -200, 0],
+              y: isDesktop ? [0, -160, 0, 180, 0].map(v => v + mousePosition.y * 0.6) : [0, -160, 0, 180, 0],
               scale: [1, 1.2, 0.8, 1.2, 1],
+            }}
+            style={{ 
+              bottom: '10%', 
+              left: '30%',
             }}
             transition={{
               duration: 4,
@@ -58,15 +96,18 @@ export default function Home() {
               ease: "easeInOut",
               delay: 1,
             }}
-            style={{ bottom: '10%', left: '30%' }}
           />
           {/* Green Blob - Solution section */}
           <motion.div
             className="absolute w-96 h-96 bg-green-400 rounded-full blur-3xl opacity-20"
             animate={{
-              x: [0, -180, 0, 140, 0],
-              y: [0, 150, 0, -140, 0],
+              x: isDesktop ? [0, -180, 0, 140, 0].map(v => v + mousePosition.x * 0.7) : [0, -180, 0, 140, 0],
+              y: isDesktop ? [0, 150, 0, -140, 0].map(v => v + mousePosition.y * 0.7) : [0, 150, 0, -140, 0],
               scale: [1, 0.8, 1.2, 0.8, 1],
+            }}
+            style={{ 
+              top: '30%', 
+              left: '50%',
             }}
             transition={{
               duration: 4,
@@ -74,7 +115,6 @@ export default function Home() {
               ease: "easeInOut",
               delay: 1.5,
             }}
-            style={{ top: '30%', left: '50%' }}
           />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
@@ -82,7 +122,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Interactive Self-Learning<br />
               Phonics Apps for Kids
-          </h1>
+            </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
               Master reading and spelling with the synthetic phonics approach.<br />
               Made by teachers, trusted by parents.
@@ -90,11 +130,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
                 href="https://apps.apple.com/in/app/uptosix-phonics/id1617850099" 
-            target="_blank"
-            rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-          >
-            <Image
+              >
+                <Image
                   src="/images/apple-logo.jpg" 
                   alt="Apple Logo" 
                   width={28}
@@ -102,11 +142,11 @@ export default function Home() {
                   className="w-7 h-7"
                 />
                 Download on App Store
-          </a>
-          <a
+              </a>
+              <a
                 href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
-            target="_blank"
-            rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -127,86 +167,96 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap justify-center items-start gap-10 md:gap-16">
             {/* App 1: UptoSix Phonics */}
-            <a 
+            <motion.a 
               href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center hover:scale-105 transition-transform"
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              className="flex flex-col items-center"
             >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-blue-500">
                 <Image 
                   src="/images/app-phonics.jpeg" 
                   alt="UptoSix Phonics App Icon" 
                   width={160}
                   height={160}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-3xl"
                 />
               </div>
               <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Phonics</p>
-            </a>
+            </motion.a>
 
             {/* App 2: UptoSix Phonics PLUS */}
-            <a 
+            <motion.a 
               href="https://play.google.com/store/apps/details?id=com.uptosix.phonicsplus&hl=en_IN" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center hover:scale-105 transition-transform"
+              whileHover={{ scale: 1.05, rotate: -1.5 }}
+              className="flex flex-col items-center"
             >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-purple-500">
                 <Image 
                   src="/images/app-phonics-plus.jpeg" 
                   alt="UptoSix Phonics PLUS App Icon" 
                   width={160}
                   height={160}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-3xl"
                 />
               </div>
               <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Phonics PLUS</p>
-            </a>
+            </motion.a>
 
             {/* App 3: UptoSix Letter Formation */}
-            <a 
+            <motion.a 
               href="https://play.google.com/store/apps/details?id=com.uptosix.letterformation&hl=en_IN" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center hover:scale-105 transition-transform"
+              whileHover={{ scale: 1.05, rotate: 1.8 }}
+              className="flex flex-col items-center"
             >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-green-500">
                 <Image 
                   src="/images/app-letter-formation.jpeg" 
                   alt="UptoSix Letter Formation App Icon" 
                   width={160}
                   height={160}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-3xl"
                 />
               </div>
               <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Letter Formation</p>
-            </a>
+            </motion.a>
 
             {/* App 4: UptoSix Spell Board */}
-            <a 
+            <motion.a 
               href="https://play.google.com/store/apps/details?id=com.uptosix.spellandwrite&hl=en_IN" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center hover:scale-105 transition-transform"
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              className="flex flex-col items-center"
             >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer">
+              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-orange-500">
                 <Image 
                   src="/images/app-spell-board.jpeg" 
                   alt="UptoSix Spell Board App Icon" 
                   width={160}
                   height={160}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-3xl"
                 />
               </div>
               <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Spell Board</p>
-            </a>
+            </motion.a>
           </div>
         </div>
       </section>
 
+      {/* Video Gallery Section */}
+      <VideoGallery />
+
       {/* App Showcase Section */}
       <AppShowcase />
+
+      {/* iPad Showcase Section */}
+      <IPadShowcase />
 
       {/* Testimonials Section */}
       <Testimonials />
