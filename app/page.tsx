@@ -25,9 +25,9 @@ export default function Home() {
                 <Image 
                   src="/images/apple-logo.jpg" 
                   alt="Apple Logo" 
-                  width={24}
-                  height={24}
-                  className="w-6 h-6"
+                  width={28}
+                  height={28}
+                  className="w-7 h-7"
                 />
                 Download on App Store
               </a>

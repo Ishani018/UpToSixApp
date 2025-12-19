@@ -35,9 +35,14 @@ const Navbar = () => {
             <Link href="/sahaj-bangla" className="hover:text-blue-600 transition-colors">
               Sahaj Bangla
             </Link>
-            <Link href="/worksheets" className="hover:text-blue-600 transition-colors">
+            <a 
+              href="https://www.teacherspayteachers.com/store/uptosix-kids" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors"
+            >
               Worksheets
-            </Link>
+            </a>
             <Link href="/about-us" className="hover:text-blue-600 transition-colors">
               About Us
             </Link>
@@ -74,13 +79,15 @@ const Navbar = () => {
               >
                 Sahaj Bangla
               </Link>
-              <Link 
-                href="/worksheets" 
+              <a 
+                href="https://www.teacherspayteachers.com/store/uptosix-kids" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
                 onClick={handleLinkClick}
               >
                 Worksheets
-              </Link>
+              </a>
               <Link 
                 href="/about-us" 
                 className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
