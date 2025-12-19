@@ -1,52 +1,134 @@
+import Image from 'next/image';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-2xl font-bold text-blue-600">UptoSix</div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
-                Home
-              </a>
-              <a href="#apps" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
-                Apps
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
-                Contact
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <section id="home" className="pt-16 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-400 via-blue-300 to-white">
+      <section id="home" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-400 via-blue-300 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center py-20 md:py-32">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Interactive Self-Learning<br />
               Phonics Apps for Kids
-            </h1>
+          </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
               Master reading and spelling with the synthetic phonics approach.<br />
               Made by teachers, trusted by parents.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.96-3.24-1.44-1.88-.67-2.94-1.04-4.24-1.78C5.24 16.84 4 15.5 4 13.1c0-2.4 1.24-3.74 3.49-5.36 1.3-.74 2.36-1.11 4.24-1.78 1.16-.48 2.15-.94 3.24-1.44 1.03-.48 2.1-.55 3.08.4.98.95.9 2.02.4 3.05-.5 1.02-1 2.01-1.48 3.17-.67 1.88-1.04 2.94-1.78 4.24C18.24 19.18 16.9 20.42 14.5 20.42c-2.4 0-3.74-1.24-5.36-3.49l3.49-3.49c1.24 1.88 1.11 2.36 1.78 4.24.48 1.16.94 2.15 1.44 3.24.48 1.03.55 2.1-.4 3.08z"/>
-                </svg>
+              <a 
+                href="https://apps.apple.com/in/app/uptosix-phonics/id1617850099" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
+              >
+                <Image 
+                  src="/images/apple-logo.jpg" 
+                  alt="Apple Logo" 
+                  width={24}
+                  height={24}
+                  className="w-6 h-6"
+                />
                 Download on App Store
-              </button>
-              <button className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2">
+              </a>
+          <a
+                href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
+            target="_blank"
+            rel="noopener noreferrer"
+                className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
+              >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L16.81,15.12L14.54,12.85L16.81,10.81L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
                 </svg>
                 Get it on Google Play
-              </button>
+              </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Try Apps FREE Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            Try the UptoSix Apps FREE!
+          </h2>
+          <div className="flex flex-wrap justify-center items-start gap-8 md:gap-12">
+            {/* App 1: UptoSix Phonics */}
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center hover:scale-105 transition-transform"
+            >
+              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+                <Image 
+                  src="/images/app-phonics.jpeg" 
+                  alt="UptoSix Phonics App Icon" 
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Phonics</p>
+            </a>
+
+            {/* App 2: UptoSix Phonics PLUS */}
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.uptosix.phonicsplus&hl=en_IN" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center hover:scale-105 transition-transform"
+            >
+              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+                <Image 
+                  src="/images/app-phonics-plus.jpeg" 
+                  alt="UptoSix Phonics PLUS App Icon" 
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Phonics PLUS</p>
+            </a>
+
+            {/* App 3: UptoSix Letter Formation */}
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.uptosix.letterformation&hl=en_IN" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center hover:scale-105 transition-transform"
+            >
+              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+                <Image 
+                  src="/images/app-letter-formation.jpeg" 
+                  alt="UptoSix Letter Formation App Icon" 
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Letter Formation</p>
+            </a>
+
+            {/* App 4: UptoSix Spell Board */}
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.uptosix.spellandwrite&hl=en_IN" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center hover:scale-105 transition-transform"
+            >
+              <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-3 cursor-pointer">
+                <Image 
+                  src="/images/app-spell-board.jpeg" 
+                  alt="UptoSix Spell Board App Icon" 
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-gray-700 font-medium text-sm md:text-base text-center">UptoSix Spell Board</p>
+            </a>
           </div>
         </div>
       </section>
@@ -88,7 +170,7 @@ export default function Home() {
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-4">
               Synthetic phonics is an effective method of teaching young children to read and spell. We have seen how quickly children learn to read and spell using synthetic phonics.
             </p>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-semibold text-green-700">
+            <p className="text-lg md:text-xl leading-relaxed font-semibold text-green-700">
               The ability to read and write independently instils confidence in children.
             </p>
           </div>
@@ -103,7 +185,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow transform hover:-translate-y-2 transition-transform">
+            <div className="bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
                 <span className="text-3xl">📚</span>
               </div>
@@ -113,7 +195,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow transform hover:-translate-y-2 transition-transform">
+            <div className="bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
                 <span className="text-3xl">🚀</span>
               </div>
@@ -123,7 +205,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow transform hover:-translate-y-2 transition-transform">
+            <div className="bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
                 <span className="text-3xl">✍️</span>
               </div>
