@@ -24,7 +24,7 @@ export default function InteractivePhonicsDemo() {
       transition={{ duration: 0.6 }}
       className="w-full max-w-md mx-auto lg:mx-0"
     >
-      <div className="bg-linear-to-br from-purple-100 to-pink-100 rounded-3xl p-8 shadow-2xl border-4 border-white">
+      <div className="bg-purple-100 rounded-3xl p-8 shadow-2xl border-4 border-white">
         <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Try It Out!
         </h3>

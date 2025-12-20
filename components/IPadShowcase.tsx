@@ -27,8 +27,34 @@ export default function IPadShowcase() {
   };
 
   return (
-    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50 relative overflow-hidden">
+      {/* Top Wave */}
+      <svg
+        className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+          className="fill-blue-50"
+        />
+      </svg>
+      {/* Bottom Wave */}
+      <svg
+        className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+          className="fill-white"
+        />
+      </svg>
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-12 md:gap-16">
           {/* Text Content */}
           <div className="text-center md:text-left text-gray-900 max-w-xl order-2 md:order-1">

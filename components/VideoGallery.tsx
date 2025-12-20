@@ -39,12 +39,26 @@ export default function VideoGallery() {
 
   return (
     <>
-      <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-indigo-900 via-blue-900 to-indigo-800">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+      <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-yellow-100 relative z-10">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-white"
+          />
+        </svg>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-black mb-16">
             Watch Our Videos
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {videos.map((video, index) => (
               <motion.div
                 key={video.id}
@@ -53,24 +67,53 @@ export default function VideoGallery() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative group cursor-pointer"
                 onClick={() => openModal(video.id)}
+                whileHover={{ scale: 1.05, y: -10 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden">
-                  <img
+                <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden shadow-xl group-hover:shadow-2xl transition-all">
+                  <motion.img
                     src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
                     alt={video.title}
                     className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition-transform">
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                    <motion.div 
+                      className="bg-white/90 rounded-full p-4"
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
                       <Play size={32} className="text-indigo-900 ml-1" fill="currentColor" />
-                    </div>
+                    </motion.div>
                   </div>
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/20 transition-colors rounded-lg"></div>
                 </div>
-                <h3 className="text-white mt-3 text-center font-semibold">{video.title}</h3>
+                <motion.h3 
+                  className="mt-3 text-center font-semibold text-black"
+                  whileHover={{ color: index < 2 ? "#000000" : "#ca8a04" }}
+                >
+                  {video.title}
+                </motion.h3>
               </motion.div>
             ))}
           </div>
         </div>
+
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-yellow-100"
+          />
+        </svg>
       </section>
 
       {/* Modal */}

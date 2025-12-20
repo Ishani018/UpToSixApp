@@ -15,45 +15,54 @@ export default function Home() {
 
   useEffect(() => {
     const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+      setIsDesktop(window.innerWidth >= 768);
     };
     checkDesktop();
     window.addEventListener('resize', checkDesktop);
     return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  useEffect(() => {
     if (!isDesktop) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 30;
-    const y = (clientY / innerHeight - 0.5) * 30;
-    setMousePosition({ x: -x, y: -y });
-  };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      // Normalize to -1 to 1 range, centered at 0
+      const x = (clientX / innerWidth - 0.5) * 2;
+      const y = (clientY / innerHeight - 0.5) * 2;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isDesktop]);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section 
-        id="home" 
-        className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white"
-        onMouseMove={handleMouseMove}
-      >
-        {/* Moving Blob Background with Mouse Parallax */}
-        <div className="absolute inset-0 overflow-hidden">
+    <div className="min-h-screen">
+      {/* Fixed Blob Background with Mouse Parallax */}
+      <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
           {/* Blue Blob - Hero gradient */}
           <motion.div
             className="absolute w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, 200, 0, -160, 0].map(v => v + mousePosition.x) : [0, 200, 0, -160, 0],
-              y: isDesktop ? [0, 100, 0, -120, 0].map(v => v + mousePosition.y) : [0, 100, 0, -120, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 120,
+              y: mousePosition.y * 120,
+              scale: [1, 1.2, 0.8, 1.2, 1],
+            } : {
+              x: [0, 200, 0, -160, 0],
+              y: [0, 100, 0, -120, 0],
               scale: [1, 1.2, 0.8, 1.2, 1],
             }}
             style={{ 
               top: '10%', 
               left: '10%',
             }}
-            transition={{
+            transition={isDesktop ? {
+              x: { type: "spring", stiffness: 50, damping: 20 },
+              y: { type: "spring", stiffness: 50, damping: 20 },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+            } : {
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
@@ -62,16 +71,24 @@ export default function Home() {
           {/* Purple Blob - App Cards */}
           <motion.div
             className="absolute w-96 h-96 bg-purple-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, -160, 0, 200, 0].map(v => v + mousePosition.x * 0.8) : [0, -160, 0, 200, 0],
-              y: isDesktop ? [0, 200, 0, -100, 0].map(v => v + mousePosition.y * 0.8) : [0, 200, 0, -100, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 100,
+              y: mousePosition.y * 100,
+              scale: [1, 0.8, 1.2, 0.8, 1],
+            } : {
+              x: [0, -160, 0, 200, 0],
+              y: [0, 200, 0, -100, 0],
               scale: [1, 0.8, 1.2, 0.8, 1],
             }}
             style={{ 
               top: '50%', 
               right: '10%',
             }}
-            transition={{
+            transition={isDesktop ? {
+              x: { type: "spring", stiffness: 50, damping: 20 },
+              y: { type: "spring", stiffness: 50, damping: 20 },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+            } : {
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
@@ -81,16 +98,24 @@ export default function Home() {
           {/* Orange Blob - Stats/Unicef section */}
           <motion.div
             className="absolute w-96 h-96 bg-orange-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, 120, 0, -200, 0].map(v => v + mousePosition.x * 0.6) : [0, 120, 0, -200, 0],
-              y: isDesktop ? [0, -160, 0, 180, 0].map(v => v + mousePosition.y * 0.6) : [0, -160, 0, 180, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 110,
+              y: mousePosition.y * 110,
+              scale: [1, 1.2, 0.8, 1.2, 1],
+            } : {
+              x: [0, 120, 0, -200, 0],
+              y: [0, -160, 0, 180, 0],
               scale: [1, 1.2, 0.8, 1.2, 1],
             }}
             style={{ 
               bottom: '10%', 
               left: '30%',
             }}
-            transition={{
+            transition={isDesktop ? {
+              x: { type: "spring", stiffness: 50, damping: 20 },
+              y: { type: "spring", stiffness: 50, damping: 20 },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 },
+            } : {
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
@@ -100,16 +125,24 @@ export default function Home() {
           {/* Green Blob - Solution section */}
           <motion.div
             className="absolute w-96 h-96 bg-green-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, -180, 0, 140, 0].map(v => v + mousePosition.x * 0.7) : [0, -180, 0, 140, 0],
-              y: isDesktop ? [0, 150, 0, -140, 0].map(v => v + mousePosition.y * 0.7) : [0, 150, 0, -140, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 90,
+              y: mousePosition.y * 90,
+              scale: [1, 0.8, 1.2, 0.8, 1],
+            } : {
+              x: [0, -180, 0, 140, 0],
+              y: [0, 150, 0, -140, 0],
               scale: [1, 0.8, 1.2, 0.8, 1],
             }}
             style={{ 
               top: '30%', 
               left: '50%',
             }}
-            transition={{
+            transition={isDesktop ? {
+              x: { type: "spring", stiffness: 50, damping: 20 },
+              y: { type: "spring", stiffness: 50, damping: 20 },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
+            } : {
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
@@ -119,16 +152,24 @@ export default function Home() {
           {/* Pink Blob 1 */}
           <motion.div
             className="absolute w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, 150, 0, -180, 0].map(v => v + mousePosition.x * 0.6) : [0, 150, 0, -180, 0],
-              y: isDesktop ? [0, -120, 0, 160, 0].map(v => v + mousePosition.y * 0.6) : [0, -120, 0, 160, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 105,
+              y: mousePosition.y * 105,
+              scale: [1, 1.1, 0.9, 1.2, 1],
+            } : {
+              x: [0, 150, 0, -180, 0],
+              y: [0, -120, 0, 160, 0],
               scale: [1, 1.1, 0.9, 1.2, 1],
             }}
             style={{ 
               top: '20%', 
               right: '30%',
             }}
-            transition={{
+            transition={isDesktop ? {
+              x: { type: "spring", stiffness: 50, damping: 20 },
+              y: { type: "spring", stiffness: 50, damping: 20 },
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
+            } : {
               duration: 5,
               repeat: Infinity,
               ease: "easeInOut",
@@ -138,16 +179,24 @@ export default function Home() {
           {/* Pink Blob 2 */}
           <motion.div
             className="absolute w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, -140, 0, 170, 0].map(v => v + mousePosition.x * 0.5) : [0, -140, 0, 170, 0],
-              y: isDesktop ? [0, 130, 0, -150, 0].map(v => v + mousePosition.y * 0.5) : [0, 130, 0, -150, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 95,
+              y: mousePosition.y * 95,
+              scale: [1, 0.9, 1.1, 0.8, 1],
+            } : {
+              x: [0, -140, 0, 170, 0],
+              y: [0, 130, 0, -150, 0],
               scale: [1, 0.9, 1.1, 0.8, 1],
             }}
             style={{ 
               bottom: '20%', 
               right: '20%',
             }}
-            transition={{
+            transition={isDesktop ? {
+              x: { type: "spring", stiffness: 50, damping: 20 },
+              y: { type: "spring", stiffness: 50, damping: 20 },
+              scale: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 },
+            } : {
               duration: 4.5,
               repeat: Infinity,
               ease: "easeInOut",
@@ -157,9 +206,13 @@ export default function Home() {
           {/* Pink Blob 3 */}
           <motion.div
             className="absolute w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-20"
-            animate={{
-              x: isDesktop ? [0, 180, 0, -130, 0].map(v => v + mousePosition.x * 0.65) : [0, 180, 0, -130, 0],
-              y: isDesktop ? [0, -140, 0, 120, 0].map(v => v + mousePosition.y * 0.65) : [0, -140, 0, 120, 0],
+            animate={isDesktop ? {
+              x: mousePosition.x * 115,
+              y: mousePosition.y * 115,
+              scale: [1, 1.2, 0.8, 1.1, 1],
+            } : {
+              x: [0, 180, 0, -130, 0],
+              y: [0, -140, 0, 120, 0],
               scale: [1, 1.2, 0.8, 1.1, 1],
             }}
             style={{ 
@@ -173,7 +226,26 @@ export default function Home() {
               delay: 0.8,
             }}
           />
-        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section 
+        id="home" 
+        className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      >
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-transparent"
+          />
+        </svg>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center py-20 md:py-32">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -225,14 +297,40 @@ export default function Home() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-slate-50"
+            className="fill-white"
           />
         </svg>
       </section>
 
       {/* Try Apps FREE Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-white"
+          />
+        </svg>
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-white"
+          />
+        </svg>
+        <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">
             Try the UptoSix Apps FREE!
           </h2>
@@ -333,8 +431,34 @@ export default function Home() {
       <Testimonials />
 
       {/* View All Apps Button */}
-      <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-gray-50"
+          />
+        </svg>
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-gray-50"
+          />
+        </svg>
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <a
             href="https://play.google.com/store/apps/dev?id=9044915143269037579&hl=en_IN"
             target="_blank"
@@ -350,8 +474,34 @@ export default function Home() {
       <FAQ />
 
       {/* About Company Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-blue-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50 relative">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-white"
+          />
+        </svg>
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-white"
+          />
+        </svg>
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About UptoSix Kids</h2>
             <div className="w-24 h-1 bg-blue-500 mx-auto rounded"></div>
@@ -365,11 +515,37 @@ export default function Home() {
       </section>
 
       {/* Vision, Mission, Philosophy Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-white"
+          />
+        </svg>
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-white"
+          />
+        </svg>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Vision Card */}
-            <div className="bg-linear-to-br from-purple-500 to-indigo-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-purple-500 rounded-2xl p-8 text-white shadow-xl">
               <div className="text-4xl mb-4">🌍</div>
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
               <p className="text-white/90 leading-relaxed">
@@ -378,7 +554,7 @@ export default function Home() {
             </div>
 
             {/* Mission Card */}
-            <div className="bg-linear-to-br from-blue-500 to-cyan-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-blue-500 rounded-2xl p-8 text-white shadow-xl">
               <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-white/90 leading-relaxed">
@@ -387,7 +563,7 @@ export default function Home() {
             </div>
 
             {/* Philosophy Card */}
-            <div className="bg-linear-to-br from-green-500 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-green-500 rounded-2xl p-8 text-white shadow-xl">
               <div className="text-4xl mb-4">💡</div>
               <h3 className="text-2xl font-bold mb-4">Our Philosophy</h3>
               <p className="text-white/90 leading-relaxed">
@@ -399,8 +575,34 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-gray-50"
+          />
+        </svg>
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-gray-50"
+          />
+        </svg>
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
           <p className="text-lg text-gray-600 mb-8">Have questions? We'd love to hear from you!</p>
           <a href="mailto:contact@uptosix.com" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
