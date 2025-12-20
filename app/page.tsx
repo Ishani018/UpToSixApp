@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import AppShowcase from '@/components/AppShowcase';
 import Testimonials from '@/components/Testimonials';
@@ -8,6 +9,42 @@ import FAQ from '@/components/FAQ';
 import VideoGallery from '@/components/VideoGallery';
 import IPadShowcase from '@/components/IPadShowcase';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import Footer from '@/components/Footer';
+
+const APPS_DATA = [
+  {
+    id: 'phonics',
+    href: 'https://play.google.com/store/apps/details?id=com.uptosix.phonics_01',
+    imageSrc: '/images/app-phonics.jpeg',
+    title: 'UptoSix Phonics',
+    borderColor: 'border-blue-500',
+    hoverRotate: 2,
+  },
+  {
+    id: 'phonics-plus',
+    href: 'https://play.google.com/store/apps/details?id=com.uptosix.phonicsplus&hl=en_IN',
+    imageSrc: '/images/app-phonics-plus.jpeg',
+    title: 'UptoSix Phonics PLUS',
+    borderColor: 'border-purple-500',
+    hoverRotate: -1.5,
+  },
+  {
+    id: 'letter-formation',
+    href: 'https://play.google.com/store/apps/details?id=com.uptosix.letterformation&hl=en_IN',
+    imageSrc: '/images/app-letter-formation.jpeg',
+    title: 'UptoSix Letter Formation',
+    borderColor: 'border-green-500',
+    hoverRotate: 1.8,
+  },
+  {
+    id: 'spell-board',
+    href: 'https://play.google.com/store/apps/details?id=com.uptosix.spellandwrite&hl=en_IN',
+    imageSrc: '/images/app-spell-board.jpeg',
+    title: 'UptoSix Spell Board',
+    borderColor: 'border-orange-500',
+    hoverRotate: -2,
+  },
+];
 
 export default function Home() {
   return (
@@ -121,85 +158,27 @@ export default function Home() {
             Try the UptoSix Apps FREE!
           </h2>
           <div className="flex flex-wrap justify-center items-start gap-10 md:gap-16">
-            {/* App 1: UptoSix Phonics */}
-            <motion.a 
-              href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-blue-500">
-                <Image 
-                  src="/images/app-phonics.jpeg" 
-                  alt="UptoSix Phonics App Icon" 
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-cover rounded-3xl"
-                />
-              </div>
-              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Phonics</p>
-            </motion.a>
-
-            {/* App 2: UptoSix Phonics PLUS */}
-            <motion.a 
-              href="https://play.google.com/store/apps/details?id=com.uptosix.phonicsplus&hl=en_IN" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, rotate: -1.5 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-purple-500">
-                <Image 
-                  src="/images/app-phonics-plus.jpeg" 
-                  alt="UptoSix Phonics PLUS App Icon" 
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-cover rounded-3xl"
-                />
-              </div>
-              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Phonics PLUS</p>
-            </motion.a>
-
-            {/* App 3: UptoSix Letter Formation */}
-            <motion.a 
-              href="https://play.google.com/store/apps/details?id=com.uptosix.letterformation&hl=en_IN" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, rotate: 1.8 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-green-500">
-                <Image 
-                  src="/images/app-letter-formation.jpeg" 
-                  alt="UptoSix Letter Formation App Icon" 
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-cover rounded-3xl"
-                />
-              </div>
-              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Letter Formation</p>
-            </motion.a>
-
-            {/* App 4: UptoSix Spell Board */}
-            <motion.a 
-              href="https://play.google.com/store/apps/details?id=com.uptosix.spellandwrite&hl=en_IN" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, rotate: -2 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 border-orange-500">
-                <Image 
-                  src="/images/app-spell-board.jpeg" 
-                  alt="UptoSix Spell Board App Icon" 
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-cover rounded-3xl"
-                />
-              </div>
-              <p className="text-gray-700 font-medium text-base md:text-lg text-center">UptoSix Spell Board</p>
-            </motion.a>
+            {APPS_DATA.map((app) => (
+              <motion.a 
+                key={app.id}
+                href={app.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, rotate: app.hoverRotate }}
+                className="flex flex-col items-center"
+              >
+                <div className={`w-36 h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-4 cursor-pointer border-b-4 ${app.borderColor}`}>
+                  <Image 
+                    src={app.imageSrc} 
+                    alt={`${app.title} App Icon`} 
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover rounded-3xl"
+                  />
+                </div>
+                <p className="text-gray-700 font-medium text-base md:text-lg text-center">{app.title}</p>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
@@ -219,55 +198,6 @@ export default function Home() {
       {/* FAQ Section */}
       <FAQ />
 
-      {/* About Company Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50 relative">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About UptoSix Kids</h2>
-            <div className="w-24 h-1 bg-blue-500 mx-auto rounded"></div>
-          </div>
-          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
-              At <span className="font-bold text-blue-600">UptoSix Kids</span>, we are a group of experienced teachers and software professionals attempting to develop educational apps for children, which focus on building a strong foundation in math and language skills.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision, Mission, Philosophy Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Vision Card */}
-            <div className="bg-purple-500 rounded-2xl p-8 text-white shadow-xl">
-              <div className="text-4xl mb-4">🌍</div>
-              <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-              <p className="text-white/90 leading-relaxed">
-                Our vision is to reach every child in the world's most remote areas using technology and high-quality education apps for kids. <span className="font-semibold">No kid is left behind.</span>
-              </p>
-            </div>
-
-            {/* Mission Card */}
-            <div className="bg-blue-500 rounded-2xl p-8 text-white shadow-xl">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-              <p className="text-white/90 leading-relaxed">
-                With our high-quality educational apps created by experienced teachers, we make learning <span className="font-semibold">simple and affordable.</span>
-              </p>
-            </div>
-
-            {/* Philosophy Card */}
-            <div className="bg-green-500 rounded-2xl p-8 text-white shadow-xl">
-              <div className="text-4xl mb-4">💡</div>
-              <h3 className="text-2xl font-bold mb-4">Our Philosophy</h3>
-              <p className="text-white/90 leading-relaxed">
-                No child should struggle with primary language and math skills. We're helping children establish a solid foundation in language and math skills to have a <span className="font-semibold">smooth lifelong learning journey.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -278,6 +208,9 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

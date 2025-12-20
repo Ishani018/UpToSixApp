@@ -7,10 +7,16 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const screenshots = [
-  '/images/example.jpg',
-  '/images/example1.jpg',
-  '/images/example2.jpg',
-  '/images/example3.jpg',
+  '/images/iphone-example1.PNG',
+  '/images/iphone-example2.PNG',
+  '/images/iphone-example3.PNG',
+  '/images/iphone-example4.PNG',
+  '/images/iphone-example5.PNG',
+  '/images/iphone-example6.PNG',
+  '/images/iphone-example7.PNG',
+  '/images/iphone-example8.PNG',
+  '/images/iphone-example9.PNG',
+  '/images/iphone-example10.PNG',
 ];
 
 export default function AppShowcase() {
@@ -27,7 +33,7 @@ export default function AppShowcase() {
   };
 
   return (
-    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-indigo-900 relative overflow-hidden z-10">
+    <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-indigo-900 relative overflow-hidden z-10">
       {/* Top Wave */}
       <svg
         className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
@@ -63,14 +69,14 @@ export default function AppShowcase() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="relative z-10"
           >
-            {/* Phone Frame */}
-            <div className="relative w-64 h-[500px] md:w-80 md:h-[600px]">
+            {/* Phone Frame - Landscape Orientation */}
+            <div className="relative w-[520px] h-[250px] md:w-[620px] md:h-[300px]">
               {/* Phone Body */}
-              <div className="absolute inset-0 bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+              <div className="absolute inset-0 bg-gray-900 rounded-4xl p-3 shadow-2xl">
                 {/* Screen */}
-                <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
-                  {/* Notch */}
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-10"></div>
+                <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
+                  {/* Notch - Left Side */}
+                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-3 h-32 bg-gray-900 rounded-r-2xl z-10"></div>
                   {/* Screen Content with Slideshow */}
                   <div className="w-full h-full relative">
                     <AnimatePresence mode="wait">
@@ -84,11 +90,10 @@ export default function AppShowcase() {
                       >
                         <Image 
                           src={screenshots[currentIndex]}
-                          alt={`UptoSix Phonics App Screenshot ${currentIndex + 1}`}
+                          alt={`UptoSix App Screenshot ${currentIndex + 1}`}
                           fill
-                          className="object-cover object-center"
-                          style={{ objectPosition: '55% 30%' }}
-                          sizes="(max-width: 768px) 256px, 320px"
+                          className="object-cover"
+                          sizes="(max-width: 768px) 520px, 620px"
                           priority={currentIndex === 0}
                           unoptimized
                         />
@@ -130,28 +135,6 @@ export default function AppShowcase() {
                 ))}
               </div>
             </div>
-
-            {/* Floating Badges */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -top-4 -right-4 bg-green-500 text-white px-5 py-3 rounded-full shadow-xl font-semibold text-sm z-20 backdrop-blur-sm border-2 border-white/20"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span>No Ads</span>
-              </div>
-            </motion.div>
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -bottom-4 -left-4 bg-blue-500 text-white px-5 py-3 rounded-full shadow-xl font-semibold text-sm z-20 backdrop-blur-sm border-2 border-white/20"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span>100% Safe</span>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Text Content */}
@@ -168,6 +151,14 @@ export default function AppShowcase() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                 <span className="font-semibold">Teacher Approved</span>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="font-semibold">No Ads</span>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="font-semibold">100% Safe</span>
               </div>
             </div>
           </div>

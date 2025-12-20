@@ -8,10 +8,16 @@ import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const screenshots = [
-  '/images/ipad-example1.jpg',
-  '/images/ipad-example2.jpg',
-  '/images/ipad-example3.jpg',
-  '/images/ipad-example4.jpg',
+  '/images/ipad-example1.PNG',
+  '/images/ipad-example2.PNG',
+  '/images/ipad-example3.PNG',
+  '/images/ipad-example4.PNG',
+  '/images/ipad-example5.PNG',
+  '/images/ipad-example6.PNG',
+  '/images/ipad-example7.PNG',
+  '/images/ipad-example8.PNG',
+  '/images/ipad-example9.PNG',
+  '/images/ipad-example10.PNG',
 ];
 
 export default function IPadShowcase() {
@@ -95,7 +101,7 @@ export default function IPadShowcase() {
               >
                 <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl group-hover:shadow-3xl transition-shadow">
                   {/* Screen */}
-                  <div className="w-full h-full bg-white rounded-3xl overflow-hidden relative">
+                  <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
                     {/* Home Indicator */}
                     <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-800 rounded-full z-10"></div>
                     {/* Screen Content with Slideshow */}
@@ -113,8 +119,7 @@ export default function IPadShowcase() {
                             src={screenshots[currentIndex]}
                             alt={`UptoSix App Screenshot ${currentIndex + 1}`}
                             fill
-                            className="object-cover object-center"
-                            style={{ objectPosition: '55% 30%' }}
+                            className="object-cover"
                             sizes="(max-width: 768px) 500px, 600px"
                             priority={currentIndex === 0}
                             unoptimized

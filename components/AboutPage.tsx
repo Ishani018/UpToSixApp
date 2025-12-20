@@ -26,10 +26,16 @@ const galleryImages = [
   { src: '/images/example1.jpg', alt: 'Team working', category: 'team' },
   { src: '/images/example2.jpg', alt: 'App development', category: 'dev' },
   { src: '/images/example3.jpg', alt: 'Happy kids', category: 'learning' },
-  { src: '/images/ipad-example1.jpg', alt: 'Behind the scenes', category: 'team' },
-  { src: '/images/ipad-example2.jpg', alt: 'Kids using app', category: 'learning' },
-  { src: '/images/ipad-example3.jpg', alt: 'Workshop', category: 'team' },
-  { src: '/images/ipad-example4.jpg', alt: 'Celebration', category: 'team' },
+  { src: '/images/ipad-example1.PNG', alt: 'Behind the scenes', category: 'team' },
+  { src: '/images/ipad-example2.PNG', alt: 'Kids using app', category: 'learning' },
+  { src: '/images/ipad-example3.PNG', alt: 'Workshop', category: 'team' },
+  { src: '/images/ipad-example4.PNG', alt: 'Celebration', category: 'team' },
+  { src: '/images/ipad-example5.PNG', alt: 'Learning experience', category: 'learning' },
+  { src: '/images/ipad-example6.PNG', alt: 'Interactive sessions', category: 'learning' },
+  { src: '/images/ipad-example7.PNG', alt: 'Educational content', category: 'learning' },
+  { src: '/images/ipad-example8.PNG', alt: 'App features', category: 'learning' },
+  { src: '/images/ipad-example9.PNG', alt: 'User interface', category: 'learning' },
+  { src: '/images/ipad-example10.PNG', alt: 'Learning activities', category: 'learning' },
 ];
 
 const AboutPage = () => {
