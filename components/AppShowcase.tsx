@@ -27,7 +27,7 @@ export default function AppShowcase() {
   };
 
   return (
-    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-indigo-900 via-blue-900 to-indigo-800 relative overflow-hidden">
+    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-pink-600 via-purple-600 to-indigo-800 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
           {/* Phone Mockup */}
@@ -119,7 +119,7 @@ export default function AppShowcase() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -bottom-4 -left-4 bg-blue-500 text-white px-5 py-3 rounded-full shadow-xl font-semibold text-sm z-20 backdrop-blur-sm border-2 border-white/20"
+              className="absolute -bottom-4 -left-4 bg-orange-500 text-white px-5 py-3 rounded-full shadow-xl font-semibold text-sm z-20 backdrop-blur-sm border-2 border-white/20"
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -133,7 +133,7 @@ export default function AppShowcase() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Learning Made Fun & Interactive
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-xl text-pink-100 mb-8">
               Experience our apps in action. Watch your child master phonics, reading, and writing through engaging, teacher-designed activities.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">

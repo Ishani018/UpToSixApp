@@ -116,6 +116,63 @@ export default function Home() {
               delay: 1.5,
             }}
           />
+          {/* Pink Blob 1 */}
+          <motion.div
+            className="absolute w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: isDesktop ? [0, 150, 0, -180, 0].map(v => v + mousePosition.x * 0.6) : [0, 150, 0, -180, 0],
+              y: isDesktop ? [0, -120, 0, 160, 0].map(v => v + mousePosition.y * 0.6) : [0, -120, 0, 160, 0],
+              scale: [1, 1.1, 0.9, 1.2, 1],
+            }}
+            style={{ 
+              top: '20%', 
+              right: '30%',
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.3,
+            }}
+          />
+          {/* Pink Blob 2 */}
+          <motion.div
+            className="absolute w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: isDesktop ? [0, -140, 0, 170, 0].map(v => v + mousePosition.x * 0.5) : [0, -140, 0, 170, 0],
+              y: isDesktop ? [0, 130, 0, -150, 0].map(v => v + mousePosition.y * 0.5) : [0, 130, 0, -150, 0],
+              scale: [1, 0.9, 1.1, 0.8, 1],
+            }}
+            style={{ 
+              bottom: '20%', 
+              right: '20%',
+            }}
+            transition={{
+              duration: 4.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+          {/* Pink Blob 3 */}
+          <motion.div
+            className="absolute w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-20"
+            animate={{
+              x: isDesktop ? [0, 180, 0, -130, 0].map(v => v + mousePosition.x * 0.65) : [0, 180, 0, -130, 0],
+              y: isDesktop ? [0, -140, 0, 120, 0].map(v => v + mousePosition.y * 0.65) : [0, -140, 0, 120, 0],
+              scale: [1, 1.2, 0.8, 1.1, 1],
+            }}
+            style={{ 
+              top: '60%', 
+              left: '20%',
+            }}
+            transition={{
+              duration: 5.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.8,
+            }}
+          />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center py-20 md:py-32">
@@ -134,7 +191,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
               >
-                <Image
+        <Image
                   src="/images/apple-logo.jpg" 
                   alt="Apple Logo" 
                   width={28}
@@ -157,10 +214,24 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
+        {/* Wave Divider */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-slate-50"
+          />
+        </svg>
       </section>
 
       {/* Try Apps FREE Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">
             Try the UptoSix Apps FREE!
