@@ -46,6 +46,9 @@ const Navbar = () => {
             <Link href="/about-us" className="hover:text-blue-600 transition-colors">
               About Us
             </Link>
+            <Link href="/virtual-playroom" className="hover:text-blue-600 transition-colors">
+              Playroom
+            </Link>
             <button className="text-gray-500 hover:text-blue-600 transition-colors">
               <Search size={20} />
             </button>
@@ -94,6 +97,13 @@ const Navbar = () => {
                 onClick={handleLinkClick}
               >
                 About Us
+              </Link>
+              <Link 
+                href="/virtual-playroom" 
+                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                onClick={handleLinkClick}
+              >
+                Playroom
               </Link>
             </div>
           </nav>

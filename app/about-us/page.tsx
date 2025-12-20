@@ -7,18 +7,40 @@ import Image from 'next/image';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Footer from '@/components/Footer';
 
-const timelineData = [
-  { year: '2020', title: 'The Idea', description: 'Teachers and developers come together with a vision', icon: Sparkles },
-  { year: '2021', title: 'First Prototype', description: 'Building the foundation with synthetic phonics', icon: BookOpen },
-  { year: '2022', title: 'First App Launch', description: 'UptoSix Phonics goes live on app stores', icon: GraduationCap },
-  { year: '2024', title: 'Global Reach', description: 'Reaching children in over 50 countries', icon: Heart },
+const appsData = [
+  { 
+    name: 'UptoSix Phonics', 
+    description: 'Foundation app for beginners with basic phonics concepts', 
+    icon: '/images/app-phonics.jpeg',
+    screenshot: '/images/example.jpg', // Placeholder - replace with actual screenshot
+    color: 'from-blue-400 to-blue-600'
+  },
+  { 
+    name: 'UptoSix Phonics PLUS', 
+    description: 'Advanced app with complex rules, digraphs, blends, and tricky words', 
+    icon: '/images/app-phonics-plus.jpeg',
+    screenshot: '/images/example1.jpg', // Placeholder - replace with actual screenshot
+    color: 'from-purple-400 to-purple-600'
+  },
+  { 
+    name: 'UptoSix Letter Formation', 
+    description: 'Teaches proper letter and number formation through animations', 
+    icon: '/images/app-letter-formation.jpeg',
+    screenshot: '/images/example2.jpg', // Placeholder - replace with actual screenshot
+    color: 'from-green-400 to-green-600'
+  },
+  { 
+    name: 'UptoSix Spell Board', 
+    description: 'Spelling-focused app using phonics-based techniques', 
+    icon: '/images/app-spell-board.jpeg',
+    screenshot: '/images/example3.jpg', // Placeholder - replace with actual screenshot
+    color: 'from-orange-400 to-orange-600'
+  },
 ];
 
 const teamMembers = [
-  { name: 'Sarah Chen', role: 'Lead Teacher', funFact: 'Loves Lego', emoji: '🧱', color: 'from-blue-400 to-blue-600' },
-  { name: 'Mike Johnson', role: 'App Developer', funFact: 'Spelling Bee Champ', emoji: '🏆', color: 'from-purple-400 to-purple-600' },
-  { name: 'Emma Williams', role: 'Curriculum Designer', funFact: 'Coffee Enthusiast', emoji: '☕', color: 'from-pink-400 to-pink-600' },
-  { name: 'David Park', role: 'UX Designer', funFact: 'Gaming Pro', emoji: '🎮', color: 'from-green-400 to-green-600' },
+  { name: 'Sampa Chakraborty', role: 'Co-Founder & Lead Teacher', funFact: 'Passionate Educator', emoji: '👩‍🏫', color: 'from-blue-400 to-blue-600' },
+  { name: 'Sumanta Chakraborty', role: 'Co-Founder & Developer', funFact: 'Tech Innovator', emoji: '👨‍💻', color: 'from-purple-400 to-purple-600' },
 ];
 
 const galleryImages = [
@@ -32,7 +54,7 @@ const galleryImages = [
   { src: '/images/ipad-example4.jpg', alt: 'Celebration', category: 'team' },
 ];
 
-const AboutPage = () => {
+export default function AboutUsPage() {
   const collageRef = useRef(null);
   const timelineRef = useRef(null);
   const problemRef = useRef(null);
@@ -71,32 +93,30 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            {/* Right: Floating Polaroid Collage */}
-            <div className="relative h-96 lg:h-[500px]">
+            {/* Right: Polaroid Grid */}
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
               {[
-                { top: '10%', left: '10%', rotate: -12, delay: 0.1 },
-                { top: '20%', right: '15%', rotate: 8, delay: 0.2 },
-                { bottom: '15%', left: '20%', rotate: -8, delay: 0.3 },
-                { bottom: '25%', right: '10%', rotate: 15, delay: 0.4 },
-              ].map((style, index) => (
+                '/images/about-hero-1.jpg.PNG',
+                '/images/about-hero-2.jpg.PNG',
+                '/images/about-hero-3.jpg.PNG',
+                '/images/about-hero-4.jpg.PNG',
+              ].map((imageSrc, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0, rotate: style.rotate - 20 }}
-                  animate={collageInView ? { opacity: 1, scale: 1, rotate: style.rotate } : { opacity: 0, scale: 0 }}
-                  transition={{ duration: 0.5, delay: style.delay, type: 'spring', stiffness: 200 }}
-                  className="absolute bg-white p-2 rounded-lg shadow-2xl"
-                  style={{
-                    top: style.top,
-                    left: style.left,
-                    right: style.right,
-                    bottom: style.bottom,
-                    transform: `rotate(${style.rotate}deg)`,
-                  }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={collageInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5, delay: index * 0.1, type: 'spring', stiffness: 200 }}
+                  className="bg-white p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
                 >
-                  <div className="w-32 h-40 md:w-40 md:h-48 bg-gradient-to-br from-purple-200 to-pink-200 rounded flex items-center justify-center overflow-hidden">
-                    <span className="text-4xl">👶</span>
+                  <div className="w-full aspect-[4/3] rounded overflow-hidden relative bg-white">
+                    <Image
+                      src={imageSrc}
+                      alt={`Team photo ${index + 1}`}
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-white rounded-full"></div>
+                  <div className="mt-1.5 md:mt-2 h-0.5 md:h-1 bg-white rounded-full"></div>
                 </motion.div>
               ))}
             </div>
@@ -167,9 +187,9 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section ref={timelineRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      {/* Apps Timeline Section */}
+      <section ref={timelineRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50 relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={timelineInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -177,66 +197,64 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our Journey
+              Our Apps
             </h2>
+            <p className="text-lg text-gray-600">
+              A growing family of educational apps designed for children
+            </p>
           </motion.div>
 
-          <div className="relative">
-            {/* Dashed Line */}
-            <svg
-              className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 hidden md:block"
-              width="2"
-              height="100%"
-            >
-              <line
-                x1="1"
-                y1="0"
-                x2="1"
-                y2="100%"
-                stroke="#cbd5e1"
-                strokeWidth="2"
-                strokeDasharray="8 4"
-              />
-            </svg>
+          {/* Horizontal Timeline Line */}
+          <div className="relative mb-12 hidden md:block">
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 transform -translate-y-1/2 rounded-full"></div>
+          </div>
 
-            {/* Timeline Items */}
-            <div className="space-y-16">
-              {timelineData.map((item, index) => {
-                const Icon = item.icon;
-                const isLeft = index % 2 === 0;
-                
-                return (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                    animate={timelineInView ? { opacity: 1, x: 0 } : { opacity: 0, x: isLeft ? -50 : 50 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className={`flex flex-col md:flex-row items-center gap-6 ${
-                      isLeft ? 'md:flex-row-reverse' : ''
-                    }`}
-                  >
-                    {/* Content */}
-                    <div className={`flex-1 ${isLeft ? 'md:text-right' : 'md:text-left'} text-center md:text-left`}>
-                      <div className="inline-block bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-200">
-                        <div className="text-3xl font-bold text-purple-600 mb-2">{item.year}</div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                      </div>
+          {/* Apps Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {appsData.map((app, index) => (
+              <motion.div
+                key={app.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={timelineInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="relative"
+              >
+                {/* App Card */}
+                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow border-2 border-gray-100 h-full flex flex-col">
+                  {/* App Screenshot Placeholder */}
+                  <div className="relative w-full aspect-video mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <Image
+                      src={app.screenshot}
+                      alt={`${app.name} screenshot`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* App Icon */}
+                  <div className="flex justify-center mb-4">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${app.color} p-2 shadow-lg`}>
+                      <Image
+                        src={app.icon}
+                        alt={`${app.name} icon`}
+                        width={64}
+                        height={64}
+                        className="w-full h-full rounded-xl object-cover"
+                      />
                     </div>
+                  </div>
 
-                    {/* Icon Node */}
-                    <div className="relative z-10 shrink-0">
-                      <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-xl border-4 border-white">
-                        <Icon className="w-8 h-8 text-white" />
-                      </div>
-                    </div>
+                  {/* App Name & Description */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">{app.name}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed text-center grow">{app.description}</p>
 
-                    {/* Spacer for alternating */}
-                    <div className="hidden md:block flex-1"></div>
-                  </motion.div>
-                );
-              })}
-            </div>
+                  {/* Timeline Node (on desktop) */}
+                  <div className="hidden md:block absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                    <div className={`w-8 h-8 bg-gradient-to-br ${app.color} rounded-full shadow-lg border-4 border-white`}></div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -258,7 +276,7 @@ const AboutPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -333,6 +351,4 @@ const AboutPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default AboutPage;
+}

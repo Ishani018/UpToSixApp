@@ -39,7 +39,7 @@ export default function VideoGallery() {
 
   return (
     <>
-      <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-yellow-300 relative z-10">
+      <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-blue-900 relative z-10">
         {/* Top Wave */}
         <svg
           className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
@@ -55,7 +55,7 @@ export default function VideoGallery() {
         </svg>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-black mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
             Watch Our Videos
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
@@ -91,8 +91,8 @@ export default function VideoGallery() {
                   <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/20 transition-colors rounded-lg"></div>
                 </div>
                 <motion.h3 
-                  className="mt-3 text-center font-semibold text-black"
-                  whileHover={{ color: index < 2 ? "#000000" : "#ca8a04" }}
+                  className="mt-3 text-center font-semibold text-white"
+                  whileHover={{ color: index < 2 ? "#ffffff" : "#a5b4fc" }}
                 >
                   {video.title}
                 </motion.h3>
@@ -111,7 +111,7 @@ export default function VideoGallery() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-yellow-300"
+            className="fill-blue-900"
           />
         </svg>
       </section>

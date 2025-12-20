@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const screenshots = [
   '/images/ipad-example1.jpg',
@@ -71,6 +72,10 @@ export default function IPadShowcase() {
               <div className="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
                 <span className="font-semibold text-gray-800">Larger Screen Experience</span>
               </div>
+              <div className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md flex items-center gap-2">
+                <Play className="w-4 h-4" fill="currentColor" />
+                <span className="font-semibold">Click on the iPad to try</span>
+              </div>
             </div>
           </div>
 
@@ -83,49 +88,62 @@ export default function IPadShowcase() {
           >
             {/* iPad Frame - Landscape Orientation */}
             <div className="relative w-[700px] h-[500px] md:w-[800px] md:h-[600px]">
-              {/* iPad Body */}
-              <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
-                {/* Screen */}
-                <div className="w-full h-full bg-white rounded-3xl overflow-hidden relative">
-                  {/* Home Indicator */}
-                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-800 rounded-full z-10"></div>
-                  {/* Screen Content with Slideshow */}
-                  <div className="w-full h-full relative">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={currentIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0"
-                      >
-                        <Image 
-                          src={screenshots[currentIndex]}
-                          alt={`UptoSix App Screenshot ${currentIndex + 1}`}
-                          fill
-                          className="object-cover object-center"
-                          style={{ objectPosition: '55% 30%' }}
-                          sizes="(max-width: 768px) 500px, 600px"
-                          priority={currentIndex === 0}
-                          unoptimized
-                        />
-                      </motion.div>
-                    </AnimatePresence>
+              {/* iPad Body - Clickable Link */}
+              <Link 
+                href="/virtual-playroom"
+                className="block absolute inset-0 cursor-pointer group"
+              >
+                <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl group-hover:shadow-3xl transition-shadow">
+                  {/* Screen */}
+                  <div className="w-full h-full bg-white rounded-3xl overflow-hidden relative">
+                    {/* Home Indicator */}
+                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-800 rounded-full z-10"></div>
+                    {/* Screen Content with Slideshow */}
+                    <div className="w-full h-full relative">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0"
+                        >
+                          <Image 
+                            src={screenshots[currentIndex]}
+                            alt={`UptoSix App Screenshot ${currentIndex + 1}`}
+                            fill
+                            className="object-cover object-center"
+                            style={{ objectPosition: '55% 30%' }}
+                            sizes="(max-width: 768px) 500px, 600px"
+                            priority={currentIndex === 0}
+                            unoptimized
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
               
               {/* Navigation Buttons */}
               <button
-                onClick={prevScreenshot}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  prevScreenshot();
+                }}
                 className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
                 aria-label="Previous screenshot"
               >
                 <ChevronLeft size={28} />
               </button>
               <button
-                onClick={nextScreenshot}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  nextScreenshot();
+                }}
                 className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
                 aria-label="Next screenshot"
               >
@@ -137,7 +155,11 @@ export default function IPadShowcase() {
                 {screenshots.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentIndex(index)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setCurrentIndex(index);
+                    }}
                     className={`w-2 h-2 rounded-full transition-all ${
                       index === currentIndex 
                         ? 'bg-gray-800 w-6' 

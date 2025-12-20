@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UptoSix Kids - Website Redesign
 
-## Getting Started
+A modern, responsive website for UptoSix Kids - educational apps for children focused on synthetic phonics and language learning.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework:** Next.js 14+ (App Router)
+- **Styling:** Tailwind CSS
+- **UI Components:** Shadcn/UI (Radix UI primitives)
+- **Icons:** Lucide React
+- **Animations:** Framer Motion
+- **Language:** TypeScript
+
+## 📁 Project Structure
+
+```
+uptosix-redesign/
+├── app/                    # Next.js App Router pages
+│   ├── about-us/          # About Us page
+│   ├── privacy-policy/    # Privacy Policy page
+│   ├── virtual-playroom/  # Interactive playroom page
+│   └── page.tsx           # Home page
+├── components/             # Reusable components
+│   ├── sections/          # Page sections (Hero, Footer, etc.)
+│   ├── AnimatedBackground.tsx
+│   ├── Footer.tsx
+│   ├── VirtualPlayroom.tsx
+│   └── ...
+└── public/
+    └── images/            # Static images and assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pages
+- **Home Page** - Hero section, app showcase, testimonials, FAQ, and more
+- **About Us** - Immersive about page with timeline, team, and gallery
+- **Virtual Playroom** - Interactive iPad experience with app demos
+- **Privacy Policy** - Comprehensive privacy policy documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Key Components
+- **AnimatedBackground** - Floating blob background with mouse parallax
+- **VirtualPlayroom** - 3D iPad with interactive app showcase
+- **IPadShowcase** - Clickable iPad mockup linking to playroom
+- **Footer** - Site-wide footer with links and contact info
 
-## Learn More
+## 🎨 Design Principles
 
-To learn more about Next.js, take a look at the following resources:
+- **Vibe:** Playful, trustworthy, clean, and accessible
+- **Color Palette:** Soft whites, vibrant primary colors (blues, oranges, greens), dark slate for text
+- **Typography:** Readable sans-serif fonts with bold, friendly headings
+- **Layouts:** Heavy use of whitespace, rounded corners, Bento Grid style layouts
+- **Responsiveness:** Mobile-first approach with responsive grids
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
 
-## Deploy on Vercel
+### Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Install dependencies
+npm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the site.
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 📱 Apps Covered
+
+- **UptoSix Phonics** - Foundation app for beginners
+- **UptoSix Phonics PLUS** - Advanced app with complex rules
+- **UptoSix Letter Formation** - Letter and number formation
+- **UptoSix Spell Board** - Spelling-focused app
+- **Sahaj Bangla** - Bengali language learning app
+
+## 🎯 Key Features
+
+- Interactive iPad showcase with 3D parallax effects
+- Animated backgrounds with mouse tracking
+- Responsive design for all devices
+- SEO-friendly with proper metadata
+- Accessible UI components
+- Smooth scroll animations
+- Image optimization with Next.js Image
+
+## 📝 Content Management
+
+### Adding New Apps
+To add a new app to the timeline, edit `app/about-us/page.tsx` and add to the `appsData` array:
+
+```typescript
+{
+  name: 'App Name',
+  description: 'App description',
+  icon: '/images/app-icon.jpg',
+  screenshot: '/images/app-screenshot.jpg',
+  color: 'from-color-400 to-color-600'
+}
+```
+
+### Updating Images
+Place images in `public/images/` and reference them as `/images/filename.ext`
+
+## 🔗 Important Links
+
+- Home: `/`
+- About Us: `/about-us`
+- Virtual Playroom: `/virtual-playroom`
+- Privacy Policy: `/privacy-policy`
+
+## 📧 Contact
+
+For questions or support, contact: **Dev@uptosix.co.in**
+
+## 📄 License
+
+Copyright © 2025 UptoSix Kids Private Limited. All rights reserved.
