@@ -39,7 +39,7 @@ export default function VideoGallery() {
 
   return (
     <>
-      <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-yellow-100 relative z-10">
+      <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-yellow-300 relative z-10">
         {/* Top Wave */}
         <svg
           className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
@@ -111,7 +111,7 @@ export default function VideoGallery() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-yellow-100"
+            className="fill-yellow-300"
           />
         </svg>
       </section>

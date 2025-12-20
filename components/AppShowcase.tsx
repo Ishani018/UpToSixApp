@@ -38,7 +38,7 @@ export default function AppShowcase() {
       >
         <path
           d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-          className="fill-yellow-100"
+          className="fill-yellow-300"
         />
       </svg>
       {/* Bottom Wave */}

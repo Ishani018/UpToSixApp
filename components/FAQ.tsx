@@ -51,33 +51,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
-      {/* Top Wave */}
-      <svg
-        className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-          className="fill-white"
-        />
-      </svg>
-      {/* Bottom Wave */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-          className="fill-transparent"
-        />
-      </svg>
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
           Frequently Asked Questions

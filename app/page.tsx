@@ -430,77 +430,11 @@ export default function Home() {
       {/* Testimonials Section */}
       <Testimonials />
 
-      {/* View All Apps Button */}
-      <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
-        {/* Top Wave */}
-        <svg
-          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-gray-50"
-          />
-        </svg>
-        {/* Bottom Wave */}
-        <svg
-          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-gray-50"
-          />
-        </svg>
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <a
-            href="https://play.google.com/store/apps/dev?id=9044915143269037579&hl=en_IN"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
-          >
-            View All UptoSix Apps on Google Play
-          </a>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <FAQ />
 
       {/* About Company Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-50 relative">
-        {/* Top Wave */}
-        <svg
-          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-white"
-          />
-        </svg>
-        {/* Bottom Wave */}
-        <svg
-          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-white"
-          />
-        </svg>
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About UptoSix Kids</h2>
@@ -516,32 +450,6 @@ export default function Home() {
 
       {/* Vision, Mission, Philosophy Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
-        {/* Top Wave */}
-        <svg
-          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-white"
-          />
-        </svg>
-        {/* Bottom Wave */}
-        <svg
-          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-white"
-          />
-        </svg>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Vision Card */}
@@ -576,32 +484,6 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
-        {/* Top Wave */}
-        <svg
-          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-gray-50"
-          />
-        </svg>
-        {/* Bottom Wave */}
-        <svg
-          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-gray-50"
-          />
-        </svg>
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
           <p className="text-lg text-gray-600 mb-8">Have questions? We'd love to hear from you!</p>
