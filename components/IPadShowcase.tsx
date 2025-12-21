@@ -90,10 +90,10 @@ export default function IPadShowcase() {
             initial={{ y: 100, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="relative z-10 order-1 md:order-2"
+            className="relative z-10 order-1 md:order-2 ml-4 md:ml-6"
           >
             {/* iPad Frame - Landscape Orientation */}
-            <div className="relative w-[700px] h-[500px] md:w-[800px] md:h-[600px]">
+            <div className="relative w-[750px] h-[500px] md:w-[850px] md:h-[600px]">
               {/* iPad Body - Clickable Link */}
               <Link 
                 href="/virtual-playroom"
@@ -102,8 +102,6 @@ export default function IPadShowcase() {
                 <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl group-hover:shadow-3xl transition-shadow">
                   {/* Screen */}
                   <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
-                    {/* Home Indicator */}
-                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-800 rounded-full z-10"></div>
                     {/* Screen Content with Slideshow */}
                     <div className="w-full h-full relative">
                       <AnimatePresence mode="wait">

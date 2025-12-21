@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Mail, Phone } from 'lucide-react'; 
 import AppShowcase from '@/components/AppShowcase';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
@@ -199,13 +200,64 @@ export default function Home() {
       <FAQ />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 relative">
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-          <p className="text-lg text-gray-600 mb-8">Have questions? We'd love to hear from you!</p>
-          <a href="mailto:contact@uptosix.com" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
-            Contact Us
-          </a>
+      <section id="contact" className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Have questions? We'd love to hear from you! Reach out to us through any of these channels.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 max-w-4xl mx-auto">
+            {/* Email */}
+            <motion.a
+              href="mailto:Dev@uptosix.co.in"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-100 group"
+            >
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
+                <Mail className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
+              <p className="text-gray-600 mb-3">Send us an email</p>
+              <p className="text-blue-600 font-semibold">Dev@uptosix.co.in</p>
+            </motion.a>
+
+            {/* Phone */}
+            <motion.a
+              href="tel:+918660087285"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-100 group"
+            >
+              <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-pink-600 transition-colors">
+                <Phone className="w-8 h-8 text-pink-600 group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
+              <p className="text-gray-600 mb-3">Reach us on phone</p>
+              <p className="text-pink-600 font-semibold">+91 8660087285</p>
+            </motion.a>
+          </div>
         </div>
       </section>
 
