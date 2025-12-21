@@ -90,7 +90,7 @@ export default function IPadShowcase() {
             initial={{ y: 100, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="relative z-10 order-1 md:order-2 ml-4 md:ml-6"
+            className="relative z-10 order-1 md:order-2 ml-6 md:ml-10"
           >
             {/* iPad Frame - Landscape Orientation */}
             <div className="relative w-[750px] h-[500px] md:w-[850px] md:h-[600px]">

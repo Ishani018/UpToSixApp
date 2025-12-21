@@ -16,16 +16,19 @@ A modern, responsive website for UptoSix Kids - educational apps for children fo
 ```
 uptosix-redesign/
 ├── app/                    # Next.js App Router pages
-│   ├── about-us/          # About Us page
+│   ├── about-us/          # About Us page with interactive app showcase
 │   ├── privacy-policy/    # Privacy Policy page
+│   ├── sahaj-bangla/      # Sahaj Bangla app landing page
+│   ├── terms/             # Terms and Conditions page
 │   ├── virtual-playroom/  # Interactive playroom page
+│   ├── layout.tsx         # Root layout with Navbar
 │   └── page.tsx           # Home page
 ├── components/             # Reusable components
-│   ├── sections/          # Page sections (Hero, Footer, etc.)
-│   ├── AnimatedBackground.tsx
-│   ├── Footer.tsx
-│   ├── VirtualPlayroom.tsx
-│   └── ...
+│   ├── AnimatedBackground.tsx  # Floating blob background with parallax
+│   ├── AppShowcase.tsx    # Phone mockup with app screenshots
+│   ├── Footer.tsx         # Site-wide footer component
+│   ├── IPadShowcase.tsx   # iPad mockup component
+│   └── VirtualPlayroom.tsx # Interactive 3D iPad playroom
 └── public/
     └── images/            # Static images and assets
 ```
@@ -33,16 +36,20 @@ uptosix-redesign/
 ## ✨ Features
 
 ### Pages
-- **Home Page** - Hero section, app showcase, testimonials, FAQ, and more
-- **About Us** - Immersive about page with timeline, team, and gallery
-- **Virtual Playroom** - Interactive iPad experience with app demos
+- **Home Page** - Hero section, app showcase (phone/iPad), testimonials, FAQ, Get in Touch section
+- **About Us** - Interactive app showcase with tab navigation, colorful "phonics" text, app descriptions
+- **Sahaj Bangla** - Dedicated landing page for Bengali learning app with narration spotlight, feature cards, and iPad showcase
+- **Virtual Playroom** - Interactive iPad experience with app screenshot carousel
 - **Privacy Policy** - Comprehensive privacy policy documentation
+- **Terms & Conditions** - Terms and conditions page
 
 ### Key Components
-- **AnimatedBackground** - Floating blob background with mouse parallax
-- **VirtualPlayroom** - 3D iPad with interactive app showcase
-- **IPadShowcase** - Clickable iPad mockup linking to playroom
-- **Footer** - Site-wide footer with links and contact info
+- **AnimatedBackground** - Floating blob background with mouse parallax effect
+- **AppShowcase** - Landscape phone mockup with app screenshots carousel
+- **IPadShowcase** - Clickable iPad mockup linking to virtual playroom
+- **VirtualPlayroom** - 3D iPad with interactive app screenshot carousel
+- **Footer** - Site-wide footer with social links and contact information
+- **Navbar** - Responsive navigation with mobile menu
 
 ## 🎨 Design Principles
 
@@ -117,8 +124,10 @@ Place images in `public/images/` and reference them as `/images/filename.ext`
 
 - Home: `/`
 - About Us: `/about-us`
+- Sahaj Bangla: `/sahaj-bangla`
 - Virtual Playroom: `/virtual-playroom`
 - Privacy Policy: `/privacy-policy`
+- Terms & Conditions: `/terms`
 
 ## 📧 Contact
 

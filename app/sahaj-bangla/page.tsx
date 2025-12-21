@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
-import { BookOpen, Volume2, PenTool } from 'lucide-react';
-import { useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { BookOpen, Volume2, PenTool, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef, useState } from 'react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Footer from '@/components/Footer';
 
@@ -12,6 +12,28 @@ export default function SahajBanglaPage() {
   const featuresRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, margin: '-100px' });
   const featuresInView = useInView(featuresRef, { once: true, margin: '-100px' });
+  
+  const [currentScreenshot, setCurrentScreenshot] = useState(0);
+  const screenshots = [
+    'sahaj_bangla_example1',
+    'sahaj_bangla_example2',
+    'sahaj_bangla_example3',
+    'sahaj_bangla_example4',
+    'sahaj_bangla_example5',
+    'sahaj_bangla_example6',
+    'sahaj_bangla_example7',
+    'sahaj_bangla_example8',
+    'sahaj_bangla_example9',
+    'sahaj_bangla_example10',
+  ];
+
+  const nextScreenshot = () => {
+    setCurrentScreenshot((prev) => (prev + 1) % screenshots.length);
+  };
+
+  const prevScreenshot = () => {
+    setCurrentScreenshot((prev) => (prev - 1 + screenshots.length) % screenshots.length);
+  };
 
   const featureCards = [
     {
@@ -116,12 +138,12 @@ export default function SahajBanglaPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative flex justify-center"
             >
-              <div className="relative w-full max-w-md">
+              <div className="relative w-full max-w-lg">
                 <Image
-                  src="/images/iphone-example1.png"
+                  src="/images/sahaj_bangla_example.png"
                   alt="Sahaj Bangla App Interface"
-                  width={400}
-                  height={800}
+                  width={500}
+                  height={1000}
                   className="w-full h-auto rounded-3xl shadow-2xl"
                   priority
                 />
@@ -145,44 +167,8 @@ export default function SahajBanglaPage() {
         </svg>
       </section>
 
-      {/* App Showcase Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Explore the App</h2>
-          </motion.div>
-          <div className="flex flex-wrap justify-center gap-8">
-            {[1, 2, 3].map((index, i) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30, rotate: -5 }}
-                whileInView={{ opacity: 1, y: 0, rotate: i % 2 === 0 ? -2 : 2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative w-64 md:w-80"
-                style={{ transform: `rotate(${i % 2 === 0 ? '-2deg' : '2deg'})` }}
-              >
-                <Image
-                  src={`/images/iphone-example${index}.png`}
-                  alt={`Sahaj Bangla Screenshot ${index}`}
-                  width={320}
-                  height={640}
-                  className="w-full h-auto rounded-3xl shadow-2xl"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Voiceover Spotlight Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-orange-50 relative z-10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -200,15 +186,134 @@ export default function SahajBanglaPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative"
               >
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-orange-200 to-orange-400 shadow-xl border-4 border-white overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center text-6xl md:text-7xl">
-                    🎭
-                  </div>
+                <div className="w-48 h-48 md:w-56 md:h-56 rounded-full shadow-xl border-4 border-white overflow-hidden">
+                  <Image
+                    src="/images/Bratati-Bandyopadhyay.jpg"
+                    alt="Bratati Bandyopadhyay"
+                    width={224}
+                    height={224}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </motion.div>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl">
                 The app is brought to life by the distinct and captivating voice of Bratati Bandyopadhyay, a renowned voice artist, making every lesson a delightful experience.
               </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* App Showcase Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-orange-50 relative z-10 overflow-hidden">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-white"
+          />
+        </svg>
+        {/* Bottom Wave */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
+            className="fill-white"
+          />
+        </svg>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Explore the App</h2>
+          </motion.div>
+          
+          {/* iPad Mockup - Exact same as IPadShowcase */}
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="relative z-10 flex justify-center"
+          >
+            {/* iPad Frame - Landscape Orientation */}
+            <div className="relative w-[640px] h-[390px] md:w-[780px] md:h-[475px]">
+              {/* iPad Body */}
+              <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
+                {/* Screen */}
+                <div className="w-full h-full bg-white rounded-3xl overflow-hidden relative">
+                  {/* Screen Content with Slideshow */}
+                  <div className="w-full h-full relative">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentScreenshot}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0"
+                      >
+                        <Image 
+                          src={`/images/${screenshots[currentScreenshot]}.png`}
+                          alt={`Sahaj Bangla Screenshot ${currentScreenshot + 1}`}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 600px, 720px"
+                          priority={currentScreenshot === 0}
+                          unoptimized
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevScreenshot}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                aria-label="Previous screenshot"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button
+                onClick={nextScreenshot}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                aria-label="Next screenshot"
+              >
+                <ChevronRight size={28} />
+              </button>
+              
+              {/* Dot Indicators */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                {screenshots.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentScreenshot(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentScreenshot 
+                        ? 'bg-gray-800 w-6' 
+                        : 'bg-gray-800/50 hover:bg-gray-800/75'
+                    }`}
+                    aria-label={`Go to screenshot ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

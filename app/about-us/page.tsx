@@ -4,14 +4,8 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Schoolbell } from 'next/font/google';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Footer from '@/components/Footer';
-
-const schoolbell = Schoolbell({
-  weight: '400',
-  subsets: ['latin'],
-});
 
 // Colorful Phonics Component
 const PhonicsText = () => {
@@ -26,7 +20,7 @@ const PhonicsText = () => {
   ];
 
   return (
-    <span className={schoolbell.className} style={{ fontWeight: 'bold' }}>
+    <span style={{ fontWeight: 'bold' }}>
       {letters.map((item, index) => (
         <span key={index} style={{ color: item.color }}>
           {item.letter}
@@ -151,8 +145,13 @@ export default function AboutUsPage() {
               animate={collageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
-                Discover the power of <PhonicsText />
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6 group">
+                <span>
+                  Discover the power of{' '}
+                </span>
+                <span className="inline-block transition-all duration-300 hover:[text-shadow:0_0_20px_rgba(253,184,19,0.6),0_0_40px_rgba(253,184,19,0.4),0_0_60px_rgba(251,191,36,0.3)]">
+                  <PhonicsText />
+                </span>
               </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 We're a passionate team of educators and technologists creating joyful learning experiences for children everywhere.
