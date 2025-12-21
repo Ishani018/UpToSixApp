@@ -7,16 +7,13 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const screenshots = [
-  '/images/iphone-example1.PNG',
-  '/images/iphone-example2.PNG',
+  '/images/iphone-example1.png',
+  '/images/iphone-example2.png',
   '/images/iphone-example3.PNG',
-  '/images/iphone-example4.PNG',
-  '/images/iphone-example5.PNG',
-  '/images/iphone-example6.PNG',
-  '/images/iphone-example7.PNG',
-  '/images/iphone-example8.PNG',
-  '/images/iphone-example9.PNG',
-  '/images/iphone-example10.PNG',
+  '/images/iphone-example4.png',
+  '/images/iphone-example5.png',
+  '/images/iphone-example6.png',
+  '/images/iphone-example7.png',
 ];
 
 export default function AppShowcase() {
