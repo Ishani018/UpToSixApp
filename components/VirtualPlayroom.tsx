@@ -13,10 +13,10 @@ const appIcons = [
 ];
 
 const screenshots = [
-  '/images/example.jpg',
-  '/images/example1.jpg',
-  '/images/example2.jpg',
-  '/images/example3.jpg',
+  '/images/ipad-example1.PNG',
+  '/images/ipad-example2.PNG',
+  '/images/ipad-example3.PNG',
+  '/images/ipad-example4.PNG',
 ];
 
 export default function VirtualPlayroom() {
