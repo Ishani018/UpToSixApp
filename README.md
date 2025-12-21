@@ -126,8 +126,8 @@ Place images in `public/images/` and reference them as `/images/filename.ext`
 - About Us: `/about-us`
 - Sahaj Bangla: `/sahaj-bangla`
 - Virtual Playroom: `/virtual-playroom`
-- Privacy Policy: `/privacy-policy`
-- Terms & Conditions: `/terms`
+- Privacy Policy: `/privacy-policy-2`
+- Terms & Conditions: `/terms-conditions`
 
 ## 📧 Contact
 
