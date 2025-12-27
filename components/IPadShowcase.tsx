@@ -4,20 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const screenshots = [
-  '/images/ipad-example1.PNG',
-  '/images/ipad-example2.PNG',
-  '/images/ipad-example3.PNG',
-  '/images/ipad-example4.PNG',
-  '/images/ipad-example5.PNG',
-  '/images/ipad-example6.PNG',
-  '/images/ipad-example7.PNG',
-  '/images/ipad-example8.PNG',
-  '/images/ipad-example9.PNG',
-  '/images/ipad-example10.PNG',
+  '/images/screenshots/ipad/ipad-example1.PNG',
+  '/images/screenshots/ipad/ipad-example2.PNG',
+  '/images/screenshots/ipad/ipad-example3.PNG',
+  '/images/screenshots/ipad/ipad-example4.PNG',
+  '/images/screenshots/ipad/ipad-example5.PNG',
+  '/images/screenshots/ipad/ipad-example6.PNG',
+  '/images/screenshots/ipad/ipad-example7.PNG',
+  '/images/screenshots/ipad/ipad-example8.PNG',
+  '/images/screenshots/ipad/ipad-example9.PNG',
+  '/images/screenshots/ipad/ipad-example10.PNG',
 ];
 
 export default function IPadShowcase() {
@@ -78,10 +77,6 @@ export default function IPadShowcase() {
               <div className="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
                 <span className="font-semibold text-gray-800">Larger Screen Experience</span>
               </div>
-              <div className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md flex items-center gap-2">
-                <Play className="w-4 h-4" fill="currentColor" />
-                <span className="font-semibold">Click on the iPad to try</span>
-              </div>
             </div>
           </div>
 
@@ -94,14 +89,10 @@ export default function IPadShowcase() {
           >
             {/* iPad Frame - Landscape Orientation */}
             <div className="relative w-[750px] h-[500px] md:w-[850px] md:h-[600px]">
-              {/* iPad Body - Clickable Link */}
-              <Link 
-                href="/virtual-playroom"
-                className="block absolute inset-0 cursor-pointer group"
-              >
-                <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl group-hover:shadow-3xl transition-shadow">
-                  {/* Screen */}
-                  <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
+              {/* iPad Body */}
+              <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
+                {/* Screen */}
+                <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
                     {/* Screen Content with Slideshow */}
                     <div className="w-full h-full relative">
                       <AnimatePresence mode="wait">
@@ -127,7 +118,6 @@ export default function IPadShowcase() {
                     </div>
                   </div>
                 </div>
-              </Link>
               
               {/* Navigation Buttons */}
               <button

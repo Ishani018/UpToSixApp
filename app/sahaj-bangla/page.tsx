@@ -15,16 +15,16 @@ export default function SahajBanglaPage() {
   
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
   const screenshots = [
-    'sahaj_bangla_example1',
-    'sahaj_bangla_example2',
-    'sahaj_bangla_example3',
-    'sahaj_bangla_example4',
-    'sahaj_bangla_example5',
-    'sahaj_bangla_example6',
-    'sahaj_bangla_example7',
-    'sahaj_bangla_example8',
-    'sahaj_bangla_example9',
-    'sahaj_bangla_example10',
+    'screenshots/sahaj-bangla/sahaj_bangla_example1',
+    'screenshots/sahaj-bangla/sahaj_bangla_example2',
+    'screenshots/sahaj-bangla/sahaj_bangla_example3',
+    'screenshots/sahaj-bangla/sahaj_bangla_example4',
+    'screenshots/sahaj-bangla/sahaj_bangla_example5',
+    'screenshots/sahaj-bangla/sahaj_bangla_example6',
+    'screenshots/sahaj-bangla/sahaj_bangla_example7',
+    'screenshots/sahaj-bangla/sahaj_bangla_example8',
+    'screenshots/sahaj-bangla/sahaj_bangla_example9',
+    'screenshots/sahaj-bangla/sahaj_bangla_example10',
   ];
 
   const nextScreenshot = () => {
@@ -35,19 +35,6 @@ export default function SahajBanglaPage() {
     setCurrentScreenshot((prev) => (prev - 1 + screenshots.length) % screenshots.length);
   };
 
-  const [currentSourceImage, setCurrentSourceImage] = useState(0);
-  const sourceImages = [
-    'tagore',
-    'vidyasagar',
-  ];
-
-  const nextSourceImage = () => {
-    setCurrentSourceImage((prev) => (prev + 1) % sourceImages.length);
-  };
-
-  const prevSourceImage = () => {
-    setCurrentSourceImage((prev) => (prev - 1 + sourceImages.length) % sourceImages.length);
-  };
 
   const featureCards = [
     {
@@ -123,7 +110,7 @@ export default function SahajBanglaPage() {
                   className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                 >
                   <Image
-                    src="/images/apple-logo.jpg" 
+                    src="/images/logos/apple-logo.jpg" 
                     alt="Apple Logo" 
                     width={28}
                     height={28}
@@ -154,7 +141,7 @@ export default function SahajBanglaPage() {
             >
               <div className="relative w-full max-w-lg">
                 <Image
-                  src="/images/sahaj_bangla_example.png"
+                  src="/images/screenshots/sahaj-bangla/sahaj_bangla_example.PNG"
                   alt="Sahaj Bangla App Interface"
                   width={500}
                   height={1000}
@@ -202,7 +189,7 @@ export default function SahajBanglaPage() {
               >
                 <div className="w-48 h-48 md:w-56 md:h-56 rounded-full shadow-xl border-4 border-white overflow-hidden">
                   <Image
-                    src="/images/Bratati-Bandyopadhyay.jpg"
+                    src="/images/people/Bratati-Bandyopadhyay.jpg"
                     alt="Bratati Bandyopadhyay"
                     width={224}
                     height={224}
@@ -243,7 +230,7 @@ export default function SahajBanglaPage() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-white"
+            className="fill-indigo-50"
           />
         </svg>
         <div className="max-w-7xl mx-auto relative z-10">
@@ -283,7 +270,7 @@ export default function SahajBanglaPage() {
                         className="absolute inset-0"
                       >
                         <Image 
-                          src={`/images/${screenshots[currentScreenshot]}.png`}
+                          src={`/images/${screenshots[currentScreenshot]}.PNG`}
                           alt={`Sahaj Bangla Screenshot ${currentScreenshot + 1}`}
                           fill
                           className="object-contain"
@@ -333,8 +320,8 @@ export default function SahajBanglaPage() {
         </div>
       </section>
 
-      {/* Why Sahaj Bangla - Combined Section */}
-      <section ref={featuresRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
+      {/* Tagore Section */}
+      <section ref={featuresRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-indigo-50 relative z-10 overflow-hidden">
         {/* Top Wave */}
         <svg
           className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
@@ -345,7 +332,7 @@ export default function SahajBanglaPage() {
         >
           <path
             d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-white"
+            className="fill-indigo-50"
           />
         </svg>
         {/* Bottom Wave */}
@@ -358,109 +345,111 @@ export default function SahajBanglaPage() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-white"
+            className="fill-indigo-50"
           />
         </svg>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={featuresInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Sahaj Bangla?</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Rooted in the rich tradition of Bengali literature, our app brings together timeless educational wisdom with modern interactive learning.
-            </p>
-          </motion.div>
-
-          {/* Source Material Image & Description */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-            {/* Source Material Image Carousel */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={featuresInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative flex justify-center"
-            >
-              <div className="relative w-full max-w-xs aspect-[3/4] rounded-xl overflow-hidden shadow-xl border-4 border-white bg-white">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentSourceImage}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <Image
-                      src={`/images/${sourceImages[currentSourceImage]}.png`}
-                      alt={`Source Material ${currentSourceImage + 1}`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1024px) 100vw, 384px"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-                
-                {/* Navigation Buttons */}
-                {sourceImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevSourceImage}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg hover:scale-110 transition-transform z-10"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button
-                      onClick={nextSourceImage}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg hover:scale-110 transition-transform z-10"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight size={20} />
-                    </button>
-                    
-                    {/* Dot Indicators */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                      {sourceImages.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentSourceImage(index)}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            index === currentSourceImage
-                              ? 'bg-white w-6'
-                              : 'bg-white/50 hover:bg-white/75'
-                          }`}
-                          aria-label={`Go to image ${index + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+            {/* Text Content */}
+            <div className="text-center md:text-left text-gray-900 w-full md:w-1/2 flex flex-col justify-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Built on Timeless Foundations
+              </h2>
+              <p className="text-xl text-gray-700 mb-8">
+                Based on Rabindranath Tagore's <em className="font-semibold text-indigo-700">Sahaj Path</em>—a timeless work that has shaped Bengali literacy for generations.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="bg-indigo-100 px-6 py-3 rounded-full shadow-sm">
+                  <span className="font-semibold text-indigo-900">Classic Literature</span>
+                </div>
+                <div className="bg-indigo-100 px-6 py-3 rounded-full shadow-sm">
+                  <span className="font-semibold text-indigo-900">Timeless Learning</span>
+                </div>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Source Material Text */}
+            {/* Tagore Image */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={featuresInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative w-full md:w-1/2 flex justify-end items-center md:pl-8"
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Built on Timeless Foundations
-              </h3>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                The lessons are primarily based on Rabindranath Tagore's <em className="font-semibold text-indigo-700">Sahaj Path</em> and Ishwarchandra Vidyasagar's <em className="font-semibold text-indigo-700">Barnoporichoy</em>—timeless works that have shaped Bengali literacy for generations.
+              <div className="relative w-full max-w-[550px] aspect-[5/3] rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/source-material/tagore.png"
+                  alt="Rabindranath Tagore - Sahaj Path"
+                  fill
+                  className="object-cover rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 550px"
+                  priority
+                  unoptimized
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vidyasagar Section */}
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-orange-50 relative z-10 overflow-hidden">
+        {/* Top Wave */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
+            className="fill-indigo-50"
+          />
+        </svg>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-12 md:gap-16">
+            {/* Text Content */}
+            <div className="text-center md:text-left text-gray-900 w-full md:w-1/2 flex flex-col justify-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Distraction-Free Learning
+              </h2>
+              <p className="text-xl text-gray-700 mb-8">
+                Based on Ishwarchandra Vidyasagar's <em className="font-semibold text-indigo-700">Barnoporichoy</em>, covering both reading and writing skills for a comprehensive learning experience.
               </p>
-              <p className="text-xl md:text-2xl font-bold text-indigo-900 mb-6">
-                100% educational content and no advertisements for a distraction-free experience.
-              </p>
-              <p className="text-lg md:text-xl text-gray-700">
-                The app covers both <strong className="text-indigo-700">Reading</strong> and <strong className="text-indigo-700">Writing</strong> skills, providing a comprehensive learning experience.
-              </p>
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="bg-orange-100 px-6 py-3 rounded-full shadow-sm">
+                  <span className="font-semibold text-orange-900">No Ads</span>
+                </div>
+                <div className="bg-orange-100 px-6 py-3 rounded-full shadow-sm">
+                  <span className="font-semibold text-orange-900">100% Educational</span>
+                </div>
+                <div className="bg-orange-100 px-6 py-3 rounded-full shadow-sm">
+                  <span className="font-semibold text-orange-900">Reading & Writing</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Vidyasagar Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative w-full md:w-1/2 flex justify-start items-center md:pr-8"
+            >
+              <div className="relative w-full max-w-[550px] aspect-[5/3] rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/source-material/Vidyasagar.png"
+                  alt="Ishwarchandra Vidyasagar - Barnoporichoy"
+                  fill
+                  className="object-cover rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 550px"
+                  priority
+                  unoptimized
+                />
+              </div>
             </motion.div>
           </div>
         </div>

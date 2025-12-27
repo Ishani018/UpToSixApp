@@ -41,12 +41,12 @@ const appsData = [
       "Why it works: 100% interactive, designed by teachers, and completely ad-free.",
       "The Result: Your child will gain the confidence to read and spell independently."
     ],
-    icon: '/images/app-phonics.jpeg',
+    icon: '/images/app-icons/app-phonics.jpeg',
     screenshots: [
-      '/images/phonics-ipad-1.png',
-      '/images/phonics-ipad-2.png',
-      '/images/phonics-ipad-3.png',
-      '/images/phonics-ipad-4.png',
+      '/images/screenshots/ipad/phonics-ipad-1.PNG',
+      '/images/screenshots/ipad/phonics-ipad-2.PNG',
+      '/images/screenshots/ipad/phonics-ipad-3.PNG',
+      '/images/screenshots/ipad/phonics-ipad-4.PNG',
     ]
   },
   {
@@ -59,12 +59,12 @@ const appsData = [
       "Huge Library: Access thousands of words and engaging stories for endless practice.",
       "Fluency Focus: Comprehensive blending and segmenting tools to turn readers into fluent speakers."
     ],
-    icon: '/images/app-phonics-plus.jpeg',
+    icon: '/images/app-icons/app-phonics-plus.jpeg',
     screenshots: [
-      '/images/phonics-plus-ipad-1.png',
-      '/images/phonics-plus-ipad-2.png',
-      '/images/phonics-plus-ipad-3.png',
-      '/images/phonics-plus-ipad-4.png',
+      '/images/screenshots/ipad/phonics-plus-ipad-1.PNG',
+      '/images/screenshots/ipad/phonics-plus-ipad-2.PNG',
+      '/images/screenshots/ipad/phonics-plus-ipad-3.PNG',
+      '/images/screenshots/ipad/phonics-plus-ipad-4.PNG',
     ]
   },
   {
@@ -77,12 +77,12 @@ const appsData = [
       "True Learning: No auto-correct means kids develop actual muscle memory and fine motor skills.",
       "Features: Includes 60 pre-writing practice pages and a freehand drawing canvas."
     ],
-    icon: '/images/app-letter-formation.jpeg',
+    icon: '/images/app-icons/app-letter-formation.jpeg',
     screenshots: [
-      '/images/letter-formation-ipad-1.png',
-      '/images/letter-formation-ipad-2.png',
-      '/images/letter-formation-ipad-3.png',
-      '/images/letter-formation-ipad-4.png',
+      '/images/screenshots/ipad/letter-formation-ipad-1.PNG',
+      '/images/screenshots/ipad/letter-formation-ipad-2.PNG',
+      '/images/screenshots/ipad/letter-formation-ipad-3.PNG',
+      '/images/screenshots/ipad/letter-formation-ipad-4.PNG',
     ]
   },
   {
@@ -95,12 +95,12 @@ const appsData = [
       "Skill Building: Features dictation activities, phonics games, and progress tracking.",
       "Safe Environment: A completely ad-free space focused on uninterrupted learning."
     ],
-    icon: '/images/app-spell-board.jpeg',
+    icon: '/images/app-icons/app-spell-board.jpeg',
     screenshots: [
-      '/images/spell-board-ipad-1.PNG',
-      '/images/spell-board-ipad-2.PNG',
-      '/images/spell-board-ipad-3.jpeg',
-      '/images/spell-board-ipad-4.jpeg',
+      '/images/screenshots/ipad/spell-board-ipad-1.PNG',
+      '/images/screenshots/ipad/spell-board-ipad-2.PNG',
+      '/images/screenshots/ipad/spell-board-ipad-3.jpeg',
+      '/images/screenshots/ipad/spell-board-ipad-4.jpeg',
     ]
   },
 ];
@@ -167,7 +167,7 @@ export default function AboutUsPage() {
             >
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/about-hero.gif"
+                  src="/images/about/about-hero.gif"
                   alt="UptoSix Kids animation"
                   fill
                   className="object-contain"

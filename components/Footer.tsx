@@ -11,10 +11,8 @@ export default function Footer() {
           <h5 className="text-white font-bold text-lg mb-4 uppercase tracking-wider">Important Links</h5>
           <ul className="space-y-2">
             <li><Link href="/about-us" className="hover:text-blue-400 transition">About Us</Link></li>
-            <li><Link href="/contact" className="hover:text-blue-400 transition">Contact</Link></li>
             <li><Link href="/privacy-policy-2" className="hover:text-blue-400 transition">Privacy Policy</Link></li>
             <li><Link href="/terms-conditions" className="hover:text-blue-400 transition">Terms & Conditions</Link></li>
-            <li><Link href="/refund" className="hover:text-blue-400 transition">Refund Policy</Link></li>
           </ul>
         </div>
 

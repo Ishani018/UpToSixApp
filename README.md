@@ -17,18 +17,16 @@ A modern, responsive website for UptoSix Kids - educational apps for children fo
 uptosix-redesign/
 ├── app/                    # Next.js App Router pages
 │   ├── about-us/          # About Us page with interactive app showcase
-│   ├── privacy-policy/    # Privacy Policy page
+│   ├── privacy-policy-2/  # Privacy Policy page
 │   ├── sahaj-bangla/      # Sahaj Bangla app landing page
-│   ├── terms/             # Terms and Conditions page
-│   ├── virtual-playroom/  # Interactive playroom page
+│   ├── terms-conditions/  # Terms and Conditions page
 │   ├── layout.tsx         # Root layout with Navbar
 │   └── page.tsx           # Home page
 ├── components/             # Reusable components
 │   ├── AnimatedBackground.tsx  # Floating blob background with parallax
 │   ├── AppShowcase.tsx    # Phone mockup with app screenshots
 │   ├── Footer.tsx         # Site-wide footer component
-│   ├── IPadShowcase.tsx   # iPad mockup component
-│   └── VirtualPlayroom.tsx # Interactive 3D iPad playroom
+│   └── IPadShowcase.tsx   # iPad mockup component
 └── public/
     └── images/            # Static images and assets
 ```
@@ -39,15 +37,13 @@ uptosix-redesign/
 - **Home Page** - Hero section, app showcase (phone/iPad), testimonials, FAQ, Get in Touch section
 - **About Us** - Interactive app showcase with tab navigation, colorful "phonics" text, app descriptions
 - **Sahaj Bangla** - Dedicated landing page for Bengali learning app with narration spotlight, feature cards, and iPad showcase
-- **Virtual Playroom** - Interactive iPad experience with app screenshot carousel
 - **Privacy Policy** - Comprehensive privacy policy documentation
 - **Terms & Conditions** - Terms and conditions page
 
 ### Key Components
 - **AnimatedBackground** - Floating blob background with mouse parallax effect
 - **AppShowcase** - Landscape phone mockup with app screenshots carousel
-- **IPadShowcase** - Clickable iPad mockup linking to virtual playroom
-- **VirtualPlayroom** - 3D iPad with interactive app screenshot carousel
+- **IPadShowcase** - iPad mockup with app screenshots carousel
 - **Footer** - Site-wide footer with social links and contact information
 - **Navbar** - Responsive navigation with mobile menu
 
@@ -125,7 +121,6 @@ Place images in `public/images/` and reference them as `/images/filename.ext`
 - Home: `/`
 - About Us: `/about-us`
 - Sahaj Bangla: `/sahaj-bangla`
-- Virtual Playroom: `/virtual-playroom`
 - Privacy Policy: `/privacy-policy-2`
 - Terms & Conditions: `/terms-conditions`
 

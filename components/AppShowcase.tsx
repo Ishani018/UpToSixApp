@@ -7,13 +7,13 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const screenshots = [
-  '/images/iphone-example1.png',
-  '/images/iphone-example2.png',
-  '/images/iphone-example3.PNG',
-  '/images/iphone-example4.png',
-  '/images/iphone-example5.png',
-  '/images/iphone-example6.png',
-  '/images/iphone-example7.png',
+  '/images/screenshots/iphone/iphone-example1.png',
+  '/images/screenshots/iphone/iphone-example2.png',
+  '/images/screenshots/iphone/iphone-example3.PNG',
+  '/images/screenshots/iphone/iphone-example4.png',
+  '/images/screenshots/iphone/iphone-example5.png',
+  '/images/screenshots/iphone/iphone-example6.png',
+  '/images/screenshots/iphone/iphone-example7.png',
 ];
 
 export default function AppShowcase() {
@@ -149,12 +149,10 @@ export default function AppShowcase() {
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                 <span className="font-semibold">Teacher Approved</span>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                 <span className="font-semibold">No Ads</span>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                 <span className="font-semibold">100% Safe</span>
               </div>
             </div>

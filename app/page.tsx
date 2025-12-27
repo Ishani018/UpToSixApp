@@ -15,7 +15,7 @@ const APPS_DATA = [
   {
     id: 'phonics',
     href: 'https://play.google.com/store/apps/details?id=com.uptosix.phonics_01',
-    imageSrc: '/images/app-phonics.jpeg',
+    imageSrc: '/images/app-icons/app-phonics.jpeg',
     title: 'UptoSix Phonics',
     borderColor: 'border-blue-500',
     hoverRotate: 2,
@@ -23,7 +23,7 @@ const APPS_DATA = [
   {
     id: 'phonics-plus',
     href: 'https://play.google.com/store/apps/details?id=com.uptosix.phonicsplus&hl=en_IN',
-    imageSrc: '/images/app-phonics-plus.jpeg',
+    imageSrc: '/images/app-icons/app-phonics-plus.jpeg',
     title: 'UptoSix Phonics PLUS',
     borderColor: 'border-purple-500',
     hoverRotate: -1.5,
@@ -31,7 +31,7 @@ const APPS_DATA = [
   {
     id: 'letter-formation',
     href: 'https://play.google.com/store/apps/details?id=com.uptosix.letterformation&hl=en_IN',
-    imageSrc: '/images/app-letter-formation.jpeg',
+    imageSrc: '/images/app-icons/app-letter-formation.jpeg',
     title: 'UptoSix Letter Formation',
     borderColor: 'border-green-500',
     hoverRotate: 1.8,
@@ -39,7 +39,7 @@ const APPS_DATA = [
   {
     id: 'spell-board',
     href: 'https://play.google.com/store/apps/details?id=com.uptosix.spellandwrite&hl=en_IN',
-    imageSrc: '/images/app-spell-board.jpeg',
+    imageSrc: '/images/app-icons/app-spell-board.jpeg',
     title: 'UptoSix Spell Board',
     borderColor: 'border-orange-500',
     hoverRotate: -2,
@@ -87,7 +87,7 @@ export default function Home() {
                 className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
               >
         <Image
-                  src="/images/apple-logo.jpg" 
+                  src="/images/logos/apple-logo.jpg" 
                   alt="Apple Logo" 
                   width={28}
                   height={28}
