@@ -154,6 +154,7 @@ export default function AboutUsPage() {
               initial={{ opacity: 0, x: -50 }}
               animate={collageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.6 }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-10"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6 group">
                 <span>

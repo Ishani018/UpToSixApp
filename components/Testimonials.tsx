@@ -227,24 +227,24 @@ export default function Testimonials() {
             {duplicatedTestimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                className="shrink-0 w-80 md:w-96 bg-white rounded-2xl p-6 shadow-lg relative hover:shadow-xl transition-all"
+                className="shrink-0 w-80 md:w-96 bg-white rounded-2xl p-6 shadow-lg relative hover:shadow-xl transition-all flex flex-col min-h-[280px]"
                 whileHover={{ scale: 1.05, y: -5 }}
               >
                 {/* Speech Bubble Tail */}
                 <div className="absolute -bottom-3 left-8 w-0 h-0 border-l-3 border-r-3 border-t-3 border-transparent border-t-white"></div>
                 <div className="absolute -bottom-[13px] left-8 w-0 h-0 border-l-3 border-r-3 border-t-3 border-transparent border-t-gray-200"></div>
                 
-                <div className="mb-4">
+                <div className="mb-4 flex-1 flex flex-col">
                   <div className="flex gap-1 mb-3">
                     {[...Array(5)].map((_, i) => (
                       <span key={i} className="text-yellow-400 text-xl">⭐</span>
                     ))}
                   </div>
-                  <p className="text-gray-700 text-base leading-relaxed italic mb-4">
+                  <p className="text-gray-700 text-base leading-relaxed italic mb-4 flex-1">
                     "{testimonial.text}"
                   </p>
                 </div>
-                <div className="text-right">
+                <div className="text-right mt-auto">
                   <p className="text-gray-600 font-semibold">
                     — {testimonial.author}
                   </p>

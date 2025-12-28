@@ -47,6 +47,14 @@ const Navbar = () => {
             <Link href="/about-us" className="hover:text-blue-600 transition-colors">
               About Us
             </Link>
+            <a
+              href="https://play.google.com/store/apps/dev?id=9044915143269037579"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"
+            >
+              Download App
+            </a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -93,6 +101,15 @@ const Navbar = () => {
               >
                 About Us
               </Link>
+              <a
+                href="https://play.google.com/store/apps/dev?id=9044915143269037579"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium text-center"
+                onClick={handleLinkClick}
+              >
+                Download App
+              </a>
             </div>
           </nav>
         )}

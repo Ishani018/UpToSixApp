@@ -14,8 +14,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UptoSix Kids - Interactive Phonics Apps for Children",
-  description: "Master reading and spelling with synthetic phonics. Made by teachers, trusted by parents.",
+  title: "UptoSix Kids - Interactive Phonics Apps for Children | Learn Bengali | Kids Education",
+  description: "Master reading and spelling with synthetic phonics. Made by teachers, trusted by parents. Interactive self-learning apps for kids aged 3-8. Learn Bengali with Sahaj Bangla, explore phonics with Barnoporichoy.",
+  keywords: [
+    "Phonics app",
+    "Learn Bengali",
+    "Kids education",
+    "Barnoporichoy",
+    "Synthetic phonics",
+    "Reading app for kids",
+    "Phonics learning",
+    "Educational apps for children",
+    "UptoSix Phonics",
+    "Kids learning apps",
+    "Phonics PLUS",
+    "Spell Board",
+    "Letter Formation",
+    "Early childhood education",
+    "Reading skills for kids",
+  ],
+  openGraph: {
+    title: "UptoSix Kids - Interactive Phonics Apps for Children",
+    description: "Master reading and spelling with synthetic phonics. Made by teachers, trusted by parents. Interactive self-learning apps for kids aged 3-8.",
+    type: "website",
+    locale: "en_US",
+    siteName: "UptoSix Kids",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UptoSix Kids - Interactive Phonics Apps for Children",
+    description: "Master reading and spelling with synthetic phonics. Made by teachers, trusted by parents.",
+  },
 };
 
 export default function RootLayout({
