@@ -224,8 +224,8 @@ export default function SahajBanglaPage() {
       <VideoGallery 
         customVideos={[
           {
-            id: 'eKpYHs-VSY4',
-            title: 'Sahaj Bangla Overview',
+            id: '-J1uEUardrE',
+            title: 'Sahaj Bangla - Learn Bengali',
           },
         ]}
         topWaveColor="fill-orange-50"

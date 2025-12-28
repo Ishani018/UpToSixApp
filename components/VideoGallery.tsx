@@ -58,8 +58,9 @@ export default function VideoGallery({
 
   const videosToDisplay = customVideos || videos;
   const displayVideos = limit ? videosToDisplay.slice(0, limit) : videosToDisplay;
-  const gridCols = limit === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4';
-  const maxWidth = limit === 1 ? 'max-w-2xl' : 'max-w-7xl';
+  const isSingleVideo = limit === 1 || displayVideos.length === 1;
+  const gridCols = isSingleVideo ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4';
+  const maxWidth = isSingleVideo ? 'max-w-[44rem]' : 'max-w-7xl';
 
   return (
     <>
