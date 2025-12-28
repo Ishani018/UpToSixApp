@@ -67,7 +67,7 @@ export default function AppShowcase() {
             className="relative z-10"
           >
             {/* Phone Frame - Landscape Orientation */}
-            <div className="relative w-full max-w-[380px] h-[183px] sm:max-w-[460px] sm:h-[221px] md:max-w-[520px] md:h-[250px] lg:max-w-[620px] lg:h-[300px]">
+            <div className="relative w-[380px] h-[183px] sm:w-[460px] sm:h-[221px] md:w-[520px] md:h-[250px] lg:w-[620px] lg:h-[300px] mx-auto">
               {/* Phone Body */}
               <div className="absolute inset-0 bg-gray-900 rounded-4xl p-3 shadow-2xl">
                 {/* Screen */}
