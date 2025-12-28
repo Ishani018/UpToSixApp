@@ -24,7 +24,6 @@ const Navbar = () => {
               width={64}
               height={64}
               className="h-12 md:h-16 w-auto"
-              unoptimized
             />
           </Link>
 

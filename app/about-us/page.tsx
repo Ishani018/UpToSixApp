@@ -182,7 +182,6 @@ export default function AboutUsPage() {
                   alt="UptoSix Kids animation"
                   fill
                   className="object-contain"
-                  unoptimized
                 />
               </div>
             </motion.div>
@@ -267,7 +266,6 @@ export default function AboutUsPage() {
                             className="object-cover"
                             sizes="(max-width: 768px) 600px, 700px"
                             priority={currentScreenshot === 0}
-                            unoptimized
                           />
                         ) : (
                           <AnimatePresence mode="wait">
@@ -286,7 +284,6 @@ export default function AboutUsPage() {
                                 className="object-cover"
                                 sizes="(max-width: 768px) 600px, 700px"
                                 priority={currentScreenshot === 0}
-                                unoptimized
                               />
                             </motion.div>
                           </AnimatePresence>

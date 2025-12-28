@@ -92,7 +92,6 @@ export default function Home() {
                   width={200}
                   height={66}
                   className="h-16 w-auto"
-                  unoptimized
                 />
               </a>
               <a
@@ -107,7 +106,6 @@ export default function Home() {
                   width={200}
                   height={66}
                   className="h-16 w-auto"
-                  unoptimized
                 />
               </a>
             </div>
