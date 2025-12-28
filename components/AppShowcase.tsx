@@ -67,7 +67,7 @@ export default function AppShowcase() {
             className="relative z-10"
           >
             {/* Phone Frame - Landscape Orientation */}
-            <div className="relative w-[520px] h-[250px] md:w-[620px] md:h-[300px]">
+            <div className="relative w-full max-w-[380px] h-[183px] sm:max-w-[460px] sm:h-[221px] md:max-w-[520px] md:h-[250px] lg:max-w-[620px] lg:h-[300px]">
               {/* Phone Body */}
               <div className="absolute inset-0 bg-gray-900 rounded-4xl p-3 shadow-2xl">
                 {/* Screen */}
@@ -90,7 +90,7 @@ export default function AppShowcase() {
                           alt={`UptoSix App Screenshot ${currentIndex + 1}`}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 768px) 520px, 620px"
+                          sizes="(max-width: 640px) 380px, (max-width: 768px) 460px, (max-width: 1024px) 520px, 620px"
                           priority={currentIndex === 0}
                           unoptimized
                         />

@@ -253,7 +253,7 @@ export default function SahajBanglaPage() {
             className="relative z-10 flex justify-center"
           >
             {/* iPad Frame - Landscape Orientation */}
-            <div className="relative w-[640px] h-[390px] md:w-[780px] md:h-[475px]">
+            <div className="relative w-full max-w-[500px] h-[305px] sm:max-w-[600px] sm:h-[366px] md:max-w-[640px] md:h-[390px] lg:max-w-[780px] lg:h-[475px]">
               {/* iPad Body */}
               <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
                 {/* Screen */}
@@ -376,7 +376,7 @@ export default function SahajBanglaPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative w-full md:w-1/2 flex justify-end items-center md:pl-8"
             >
-              <div className="relative w-full max-w-[550px] aspect-[5/3] rounded-xl overflow-hidden shadow-xl">
+              <div className="relative w-full max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[550px] aspect-[5/3] rounded-xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/source-material/tagore.png"
                   alt="Rabindranath Tagore - Sahaj Path"
@@ -439,7 +439,7 @@ export default function SahajBanglaPage() {
               transition={{ duration: 0.6 }}
               className="relative w-full md:w-1/2 flex justify-start items-center md:pr-8"
             >
-              <div className="relative w-full max-w-[550px] aspect-[5/3] rounded-xl overflow-hidden shadow-xl">
+              <div className="relative w-full max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[550px] aspect-[5/3] rounded-xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/source-material/Vidyasagar.png"
                   alt="Ishwarchandra Vidyasagar - Barnoporichoy"

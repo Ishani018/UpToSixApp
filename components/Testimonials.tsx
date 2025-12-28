@@ -65,10 +65,20 @@ export default function Testimonials() {
   const scrollLeft = useRef(0);
   const autoScrollRef = useRef(0);
 
-  // Calculate the distance to move (width of one set of testimonials)
-  const cardWidth = 384; // w-96 = 384px
+  // Responsive card width: w-80 (320px) on mobile, w-96 (384px) on md+
+  const [cardWidth, setCardWidth] = useState(320);
   const gap = 24; // gap-6 = 24px
   const moveDistance = (cardWidth + gap) * testimonials.length;
+
+  // Update card width on resize
+  useEffect(() => {
+    const updateCardWidth = () => {
+      setCardWidth(window.innerWidth >= 768 ? 384 : 320);
+    };
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, []);
 
   useEffect(() => {
     let animationFrame: number;

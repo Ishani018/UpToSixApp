@@ -88,7 +88,7 @@ export default function IPadShowcase() {
             className="relative z-10 order-1 md:order-2 ml-6 md:ml-10"
           >
             {/* iPad Frame - Landscape Orientation */}
-            <div className="relative w-[750px] h-[500px] md:w-[850px] md:h-[600px]">
+            <div className="relative w-full max-w-[600px] h-[400px] sm:max-w-[650px] sm:h-[433px] md:max-w-[750px] md:h-[500px] lg:max-w-[850px] lg:h-[600px]">
               {/* iPad Body */}
               <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
                 {/* Screen */}
@@ -109,7 +109,7 @@ export default function IPadShowcase() {
                             alt={`UptoSix App Screenshot ${currentIndex + 1}`}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 768px) 500px, 600px"
+                            sizes="(max-width: 640px) 600px, (max-width: 768px) 650px, (max-width: 1024px) 750px, 850px"
                             priority={currentIndex === 0}
                             unoptimized
                           />

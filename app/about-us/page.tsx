@@ -240,7 +240,7 @@ export default function AboutUsPage() {
                 className="relative z-10 shrink-0"
               >
                 {/* iPad Frame - Landscape Orientation */}
-                <div className="relative w-[600px] h-[400px] md:w-[700px] md:h-[500px]">
+                <div className="relative w-full max-w-[500px] h-[333px] sm:max-w-[550px] sm:h-[367px] md:max-w-[600px] md:h-[400px] lg:max-w-[700px] lg:h-[500px]">
                   {/* iPad Body */}
                   <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
                     {/* Screen */}
