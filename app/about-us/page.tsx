@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import AnimatedBackground from '@/components/AnimatedBackground';
@@ -114,6 +114,16 @@ export default function AboutUsPage() {
 
   const [selectedApp, setSelectedApp] = useState(0);
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const selectedAppData = appsData[selectedApp];
   const currentScreenshots = selectedAppData?.screenshots || [];
@@ -234,10 +244,11 @@ export default function AboutUsPage() {
             >
               {/* iPad Mockup */}
               <motion.div
-                initial={{ x: selectedApp % 2 === 0 ? -50 : 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                initial={isMobile ? {} : { x: selectedApp % 2 === 0 ? -50 : 50, opacity: 0 }}
+                animate={isMobile ? {} : { x: 0, opacity: 1 }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
                 className="relative z-10 shrink-0"
+                style={isMobile ? { opacity: 1, x: 0 } : {}}
               >
                 {/* iPad Frame - Landscape Orientation */}
                 <div className="relative w-[500px] h-[333px] sm:w-[550px] sm:h-[367px] md:w-[600px] md:h-[400px] lg:w-[700px] lg:h-[500px] mx-auto">
@@ -247,26 +258,38 @@ export default function AboutUsPage() {
                     <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
                       {/* Screen Content with Slideshow */}
                       <div className="w-full h-full relative">
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            key={currentScreenshot}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="absolute inset-0"
-                          >
-                            <Image 
-                              src={currentScreenshots[currentScreenshot]}
-                              alt={`${selectedAppData.name} Screenshot ${currentScreenshot + 1}`}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 600px, 700px"
-                              priority={currentScreenshot === 0}
-                              unoptimized
-                            />
-                          </motion.div>
-                        </AnimatePresence>
+                        {isMobile ? (
+                          <Image 
+                            src={currentScreenshots[currentScreenshot]}
+                            alt={`${selectedAppData.name} Screenshot ${currentScreenshot + 1}`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 600px, 700px"
+                            priority={currentScreenshot === 0}
+                            unoptimized
+                          />
+                        ) : (
+                          <AnimatePresence mode="wait">
+                            <motion.div
+                              key={currentScreenshot}
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -20 }}
+                              transition={{ duration: 0.3 }}
+                              className="absolute inset-0"
+                            >
+                              <Image 
+                                src={currentScreenshots[currentScreenshot]}
+                                alt={`${selectedAppData.name} Screenshot ${currentScreenshot + 1}`}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 600px, 700px"
+                                priority={currentScreenshot === 0}
+                                unoptimized
+                              />
+                            </motion.div>
+                          </AnimatePresence>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -276,14 +299,14 @@ export default function AboutUsPage() {
                     <>
                       <button
                         onClick={prevScreenshot}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                        className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                         aria-label="Previous screenshot"
                       >
                         <ChevronLeft size={28} />
                       </button>
                       <button
                         onClick={nextScreenshot}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                        className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                         aria-label="Next screenshot"
                       >
                         <ChevronRight size={28} />

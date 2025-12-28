@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -23,6 +23,16 @@ export default function IPadShowcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const nextScreenshot = () => {
     setCurrentIndex((prev) => (prev + 1) % screenshots.length);
@@ -82,10 +92,11 @@ export default function IPadShowcase() {
 
           {/* iPad Mockup */}
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            initial={isMobile ? {} : { y: 100, opacity: 0 }}
+            animate={isMobile ? {} : (isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 })}
+            transition={isMobile ? { duration: 0 } : { duration: 0.8, ease: 'easeOut' }}
             className="relative z-10 order-1 md:order-2 ml-6 md:ml-10"
+            style={isMobile ? { opacity: 1, y: 0 } : {}}
           >
             {/* iPad Frame - Landscape Orientation */}
             <div className="relative w-[600px] h-[400px] sm:w-[650px] sm:h-[433px] md:w-[750px] md:h-[500px] lg:w-[850px] lg:h-[600px] mx-auto">
@@ -95,26 +106,38 @@ export default function IPadShowcase() {
                 <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
                     {/* Screen Content with Slideshow */}
                     <div className="w-full h-full relative">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={currentIndex}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute inset-0"
-                        >
-                          <Image 
-                            src={screenshots[currentIndex]}
-                            alt={`UptoSix App Screenshot ${currentIndex + 1}`}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 640px) 600px, (max-width: 768px) 650px, (max-width: 1024px) 750px, 850px"
-                            priority={currentIndex === 0}
-                            unoptimized
-                          />
-                        </motion.div>
-                      </AnimatePresence>
+                      {isMobile ? (
+                        <Image 
+                          src={screenshots[currentIndex]}
+                          alt={`UptoSix App Screenshot ${currentIndex + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 600px, (max-width: 768px) 650px, (max-width: 1024px) 750px, 850px"
+                          priority={currentIndex === 0}
+                          unoptimized
+                        />
+                      ) : (
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={currentIndex}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute inset-0"
+                          >
+                            <Image 
+                              src={screenshots[currentIndex]}
+                              alt={`UptoSix App Screenshot ${currentIndex + 1}`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 600px, (max-width: 768px) 650px, (max-width: 1024px) 750px, 850px"
+                              priority={currentIndex === 0}
+                              unoptimized
+                            />
+                          </motion.div>
+                        </AnimatePresence>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -126,7 +149,7 @@ export default function IPadShowcase() {
                   e.stopPropagation();
                   prevScreenshot();
                 }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                 aria-label="Previous screenshot"
               >
                 <ChevronLeft size={28} />

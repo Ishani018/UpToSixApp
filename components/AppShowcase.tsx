@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -20,6 +20,16 @@ export default function AppShowcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const nextScreenshot = () => {
     setCurrentIndex((prev) => (prev + 1) % screenshots.length);
@@ -61,10 +71,11 @@ export default function AppShowcase() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
           {/* Phone Mockup */}
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            initial={isMobile ? {} : { y: 100, opacity: 0 }}
+            animate={isMobile ? {} : (isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 })}
+            transition={isMobile ? { duration: 0 } : { duration: 0.8, ease: 'easeOut' }}
             className="relative z-10"
+            style={isMobile ? { opacity: 1, y: 0 } : {}}
           >
             {/* Phone Frame - Landscape Orientation */}
             <div className="relative w-[380px] h-[183px] sm:w-[460px] sm:h-[221px] md:w-[520px] md:h-[250px] lg:w-[620px] lg:h-[300px] mx-auto">
@@ -76,15 +87,8 @@ export default function AppShowcase() {
                   <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-3 h-32 bg-gray-900 rounded-r-2xl z-10"></div>
                   {/* Screen Content with Slideshow */}
                   <div className="w-full h-full relative">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={currentIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0"
-                      >
+                    {isMobile ? (
+                      <div className="absolute inset-0">
                         <Image 
                           src={screenshots[currentIndex]}
                           alt={`UptoSix App Screenshot ${currentIndex + 1}`}
@@ -94,8 +98,29 @@ export default function AppShowcase() {
                           priority={currentIndex === 0}
                           unoptimized
                         />
-                      </motion.div>
-                    </AnimatePresence>
+                      </div>
+                    ) : (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0"
+                        >
+                          <Image 
+                            src={screenshots[currentIndex]}
+                            alt={`UptoSix App Screenshot ${currentIndex + 1}`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 380px, (max-width: 768px) 460px, (max-width: 1024px) 520px, 620px"
+                            priority={currentIndex === 0}
+                            unoptimized
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    )}
                   </div>
                 </div>
               </div>
@@ -103,14 +128,14 @@ export default function AppShowcase() {
               {/* Navigation Buttons */}
               <button
                 onClick={prevScreenshot}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg hover:scale-110 transition-transform z-30"
+                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                 aria-label="Previous screenshot"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={nextScreenshot}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg hover:scale-110 transition-transform z-30"
+                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                 aria-label="Next screenshot"
               >
                 <ChevronRight size={24} />

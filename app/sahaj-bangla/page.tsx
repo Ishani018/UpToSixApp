@@ -3,9 +3,10 @@
 import Image from 'next/image';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { BookOpen, Volume2, PenTool, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Footer from '@/components/Footer';
+import VideoGallery from '@/components/VideoGallery';
 
 export default function SahajBanglaPage() {
   const heroRef = useRef(null);
@@ -14,6 +15,16 @@ export default function SahajBanglaPage() {
   const featuresInView = useInView(featuresRef, { once: true, margin: '-100px' });
   
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   const screenshots = [
     'screenshots/sahaj-bangla/sahaj_bangla_example1',
     'screenshots/sahaj-bangla/sahaj_bangla_example2',
@@ -167,13 +178,13 @@ export default function SahajBanglaPage() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-white"
+            className="fill-orange-50"
           />
         </svg>
       </section>
 
       {/* Voiceover Spotlight Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-orange-50 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -209,6 +220,19 @@ export default function SahajBanglaPage() {
         </div>
       </section>
 
+      {/* Video Gallery Section */}
+      <VideoGallery 
+        customVideos={[
+          {
+            id: 'eKpYHs-VSY4',
+            title: 'Sahaj Bangla Overview',
+          },
+        ]}
+        topWaveColor="fill-orange-50"
+        bottomWaveColor="fill-orange-50"
+        backgroundColor="bg-indigo-900"
+      />
+
       {/* App Showcase Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-orange-50 relative z-10 overflow-hidden">
         {/* Top Wave */}
@@ -221,7 +245,7 @@ export default function SahajBanglaPage() {
         >
           <path
             d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-white"
+            className="fill-orange-50"
           />
         </svg>
         {/* Bottom Wave */}
@@ -250,11 +274,12 @@ export default function SahajBanglaPage() {
           
           {/* iPad Mockup - Exact same as IPadShowcase */}
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            initial={isMobile ? {} : { y: 100, opacity: 0 }}
+            whileInView={isMobile ? {} : { y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={isMobile ? { duration: 0 } : { duration: 0.8, ease: 'easeOut' }}
             className="relative z-10 flex justify-center"
+            style={isMobile ? { opacity: 1, y: 0 } : {}}
           >
             {/* iPad Frame - Landscape Orientation */}
             <div className="relative w-full max-w-[500px] h-[305px] sm:max-w-[600px] sm:h-[366px] md:max-w-[640px] md:h-[390px] lg:max-w-[780px] lg:h-[475px]">
@@ -264,26 +289,38 @@ export default function SahajBanglaPage() {
                 <div className="w-full h-full bg-white rounded-3xl overflow-hidden relative">
                   {/* Screen Content with Slideshow */}
                   <div className="w-full h-full relative">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={currentScreenshot}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0"
-                      >
-                        <Image 
-                          src={`/images/${screenshots[currentScreenshot]}.PNG`}
-                          alt={`Sahaj Bangla Screenshot ${currentScreenshot + 1}`}
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 768px) 600px, 720px"
-                          priority={currentScreenshot === 0}
-                          unoptimized
-                        />
-                      </motion.div>
-                    </AnimatePresence>
+                    {isMobile ? (
+                      <Image 
+                        src={`/images/${screenshots[currentScreenshot]}.PNG`}
+                        alt={`Sahaj Bangla Screenshot ${currentScreenshot + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 600px, 720px"
+                        priority={currentScreenshot === 0}
+                        unoptimized
+                      />
+                    ) : (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentScreenshot}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0"
+                        >
+                          <Image 
+                            src={`/images/${screenshots[currentScreenshot]}.PNG`}
+                            alt={`Sahaj Bangla Screenshot ${currentScreenshot + 1}`}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 768px) 600px, 720px"
+                            priority={currentScreenshot === 0}
+                            unoptimized
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    )}
                   </div>
                 </div>
               </div>
@@ -291,14 +328,14 @@ export default function SahajBanglaPage() {
               {/* Navigation Buttons */}
               <button
                 onClick={prevScreenshot}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                 aria-label="Previous screenshot"
               >
                 <ChevronLeft size={28} />
               </button>
               <button
                 onClick={nextScreenshot}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30"
+                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg z-30 ${isMobile ? '' : 'hover:scale-110 transition-transform'}`}
                 aria-label="Next screenshot"
               >
                 <ChevronRight size={28} />

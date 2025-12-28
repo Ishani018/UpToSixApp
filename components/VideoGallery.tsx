@@ -7,24 +7,43 @@ import { Play, X } from 'lucide-react';
 
 const videos = [
   {
-    id: 'r5p8Z9FETKk',
+    id: 'aQC8x2CEwHg',
+    title: 'What is Phonics?',
+  },
+  {
+    id: 'iamWq0TVd0o',
     title: 'What is UptoSix Phonics?',
   },
   {
-    id: 'GBYtLQqCpuc',
-    title: 'Blending & Segmenting',
+    id: 'HsCskXr_v-Y',
+    title: 'Spell Board Demo',
   },
   {
-    id: 'vovWOyxb-ZE',
-    title: 'Letter Formation Demo',
-  },
-  {
-    id: 'm8ZzhS_hIEo',
+    id: '_SZ_sNt5V3I',
     title: 'Phonics PLUS Overview',
   },
 ];
 
-export default function VideoGallery() {
+interface Video {
+  id: string;
+  title: string;
+}
+
+interface VideoGalleryProps {
+  limit?: number;
+  topWaveColor?: string;
+  bottomWaveColor?: string;
+  backgroundColor?: string;
+  customVideos?: Video[];
+}
+
+export default function VideoGallery({ 
+  limit, 
+  topWaveColor = 'fill-white',
+  bottomWaveColor = 'fill-blue-900',
+  backgroundColor = 'bg-blue-900',
+  customVideos
+}: VideoGalleryProps = {}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
@@ -37,9 +56,14 @@ export default function VideoGallery() {
     setSelectedVideo(null);
   };
 
+  const videosToDisplay = customVideos || videos;
+  const displayVideos = limit ? videosToDisplay.slice(0, limit) : videosToDisplay;
+  const gridCols = limit === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4';
+  const maxWidth = limit === 1 ? 'max-w-2xl' : 'max-w-7xl';
+
   return (
     <>
-      <section ref={ref} className="py-32 md:py-40 px-4 sm:px-6 lg:px-8 bg-blue-900 relative z-10">
+      <section ref={ref} className={`py-32 md:py-40 px-4 sm:px-6 lg:px-8 ${backgroundColor} relative z-10`}>
         {/* Top Wave */}
         <svg
           className="absolute top-0 left-0 w-full h-16 md:h-32 z-10 pointer-events-none"
@@ -50,16 +74,16 @@ export default function VideoGallery() {
         >
           <path
             d="M0,40 Q240,80 480,40 T960,40 T1440,40 L1440,0 L0,0 Z"
-            className="fill-white"
+            className={topWaveColor}
           />
         </svg>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className={`${maxWidth} mx-auto relative z-10`}>
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            Watch Our Videos
+            {limit === 1 ? 'Watch Our Video' : 'Watch Our Videos'}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-            {videos.map((video, index) => (
+          <div className={`grid ${gridCols} gap-8 md:gap-10`}>
+            {displayVideos.map((video, index) => (
               <motion.div
                 key={video.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -111,7 +135,7 @@ export default function VideoGallery() {
         >
           <path
             d="M0,80 Q240,40 480,80 T960,80 T1440,80 L1440,120 L0,120 Z"
-            className="fill-blue-900"
+            className={bottomWaveColor}
           />
         </svg>
       </section>
@@ -139,7 +163,7 @@ export default function VideoGallery() {
             <div className="aspect-video">
               <iframe
                 src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-                title={videos.find(v => v.id === selectedVideo)?.title}
+                title={videosToDisplay.find(v => v.id === selectedVideo)?.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"

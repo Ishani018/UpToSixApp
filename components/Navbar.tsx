@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,11 +19,12 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center" onClick={handleLinkClick}>
             <Image 
-              src="/images/logos/uptosix-logo.jpg" 
+              src="/images/logos/uptosix-logo.png" 
               alt="UptoSix Kids Logo" 
               width={64}
               height={64}
               className="h-12 md:h-16 w-auto"
+              unoptimized
             />
           </Link>
 
@@ -46,9 +47,6 @@ const Navbar = () => {
             <Link href="/about-us" className="hover:text-blue-600 transition-colors">
               About Us
             </Link>
-            <button className="text-gray-500 hover:text-blue-600 transition-colors">
-              <Search size={20} />
-            </button>
           </nav>
 
           {/* Mobile Menu Toggle */}

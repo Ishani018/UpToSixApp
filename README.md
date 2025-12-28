@@ -247,7 +247,7 @@ Images are organized into logical folders within `public/images/`:
 2. **Run Development Server**
 ```bash
 npm run dev
-   ```
+```
    Opens at [http://localhost:3000](http://localhost:3000)
 
 3. **Build for Production**
