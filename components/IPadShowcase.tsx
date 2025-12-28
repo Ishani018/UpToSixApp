@@ -95,52 +95,52 @@ export default function IPadShowcase() {
             initial={isMobile ? {} : { y: 100, opacity: 0 }}
             animate={isMobile ? {} : (isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 })}
             transition={isMobile ? { duration: 0 } : { duration: 0.8, ease: 'easeOut' }}
-            className="relative z-10 order-1 md:order-2 w-full md:ml-10"
+            className="relative z-10 order-1 md:order-2 ml-6 md:ml-10"
             style={isMobile ? { opacity: 1, y: 0 } : {}}
           >
             {/* iPad Frame - Landscape Orientation */}
-            <div className="relative w-full max-w-[340px] h-[227px] sm:max-w-[450px] sm:h-[300px] md:max-w-[600px] md:h-[400px] lg:max-w-[750px] lg:h-[500px] xl:max-w-[850px] xl:h-[600px] mx-auto">
+            <div className="relative w-[600px] h-[400px] sm:w-[650px] sm:h-[433px] md:w-[750px] md:h-[500px] lg:w-[850px] lg:h-[600px] mx-auto">
               {/* iPad Body */}
               <div className="absolute inset-0 bg-gray-800 rounded-4xl p-4 shadow-2xl">
                 {/* Screen */}
                 <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
-                    {/* Screen Content with Slideshow */}
-                    <div className="w-full h-full relative">
+                  {/* Screen Content with Slideshow */}
+                  <div className="w-full h-full relative">
                       {isMobile ? (
                         <Image 
                           src={screenshots[currentIndex]}
                           alt={`UptoSix App Screenshot ${currentIndex + 1}`}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 640px) 340px, (max-width: 768px) 450px, (max-width: 1024px) 600px, (max-width: 1280px) 750px, 850px"
+                          sizes="(max-width: 640px) 600px, (max-width: 768px) 650px, (max-width: 1024px) 750px, 850px"
                           priority={currentIndex === 0}
                           unoptimized
                         />
                       ) : (
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            key={currentIndex}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="absolute inset-0"
-                          >
-                            <Image 
-                              src={screenshots[currentIndex]}
-                              alt={`UptoSix App Screenshot ${currentIndex + 1}`}
-                              fill
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentIndex}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0"
+                      >
+                        <Image 
+                          src={screenshots[currentIndex]}
+                          alt={`UptoSix App Screenshot ${currentIndex + 1}`}
+                          fill
                               className="object-cover"
-                              sizes="(max-width: 640px) 340px, (max-width: 768px) 450px, (max-width: 1024px) 600px, (max-width: 1280px) 750px, 850px"
-                              priority={currentIndex === 0}
-                              unoptimized
-                            />
-                          </motion.div>
-                        </AnimatePresence>
+                              sizes="(max-width: 640px) 600px, (max-width: 768px) 650px, (max-width: 1024px) 750px, 850px"
+                          priority={currentIndex === 0}
+                          unoptimized
+                        />
+                      </motion.div>
+                    </AnimatePresence>
                       )}
-                    </div>
                   </div>
                 </div>
+              </div>
               
               {/* Navigation Buttons */}
               <button
