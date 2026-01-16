@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Mail, Phone, ChevronLeft, ChevronRight } from 'lucide-react'; 
+import { Mail, Phone, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react'; 
 import AppShowcase from '@/components/AppShowcase';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
@@ -482,9 +482,11 @@ export default function Home() {
               <p className="text-blue-600 font-semibold">Dev@uptosix.co.in</p>
             </motion.a>
 
-            {/* Phone */}
+            {/* WhatsApp */}
             <motion.a
-              href="tel:+918660087285"
+              href="https://wa.me/918660087285"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -492,12 +494,12 @@ export default function Home() {
               whileHover={{ y: -5 }}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-100 group"
             >
-              <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-pink-600 transition-colors">
-                <Phone className="w-8 h-8 text-pink-600 group-hover:text-white transition-colors" />
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600 transition-colors">
+                <MessageCircle className="w-8 h-8 text-green-600 group-hover:text-white transition-colors" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
-              <p className="text-gray-600 mb-3">Reach us on phone</p>
-              <p className="text-pink-600 font-semibold">+91 8660087285</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Message Us</h3>
+              <p className="text-gray-600 mb-3">Reach us on WhatsApp</p>
+              <p className="text-green-600 font-semibold">+91 8660087285</p>
             </motion.a>
           </div>
         </div>
