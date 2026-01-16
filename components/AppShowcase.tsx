@@ -169,16 +169,16 @@ export default function AppShowcase() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="font-semibold">50K+ Downloads</span>
+                <span className="font-semibold">200K+ Downloads and Counting</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                 <span className="font-semibold">Teacher Approved</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="font-semibold">No Ads</span>
+                <span className="font-semibold">No Ads and 100% Safe</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="font-semibold">100% Safe</span>
+                <span className="font-semibold">Interactive and Endless Practice</span>
               </div>
             </div>
           </div>

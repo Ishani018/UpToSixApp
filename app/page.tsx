@@ -50,13 +50,16 @@ const APPS_DATA = [
 const appsData = [
   {
     id: 1,
-    name: 'UptoSix Phonics',
-    subtitle: 'Ages 3–5',
-    description: "Build a strong reading foundation with the proven synthetic phonics approach. Perfect for children aged 3 to 5, this app makes learning to read simple and effective. Unlike other apps, we focus on systematic, step-by-step lessons without distractions.",
+    name: 'UptoSix Phonics App',
+    subtitle: 'Ages 3–5 years',
+    description: "At UptoSix, we make learning phonics simple and effective. UptoSix Phonics apps follow the proven synthetic phonics approach, where kids first learn individual sound-lette, and then blend those sounds to form words. To spell, they'll break words into individual sounds—a skill that builds a strong reading and spelling foundation.",
     features: [
-      "What they learn: 24 letter sounds, proper formation, blending, and segmenting.",
-      "Why it works: 100% interactive, designed by teachers, and completely ad-free.",
-      "The Result: Your child will gain the confidence to read and spell independently."
+      { type: 'heading', text: 'Who is the UptoSix Phonics App for?' },
+      { type: 'item', text: 'Perfect for kids aged 3 to 5 years old' },
+      { type: 'heading', text: 'What Your Child Will Learn' },
+      { type: 'item', text: '24 letter sounds, letter formation, and endless blending/segmenting practice' },
+      { type: 'heading', text: 'Why Choose UptoSix Phonics?' },
+      { type: 'item', text: 'Created by experienced teachers, no ads, safe and distraction-free' }
     ],
     icon: '/images/app-icons/app-phonics.jpeg',
     screenshots: [
@@ -68,13 +71,14 @@ const appsData = [
   },
   {
     id: 2,
-    name: 'UptoSix Phonics PLUS',
+    name: 'UptoSix Phonics PLUS App',
     subtitle: 'Ages 5+',
-    description: "Take reading fluency to the next level. Designed for children aged 5+ or those needing extra support, this app bridges the gap between basic phonics and advanced reading.",
+    description: "The UptoSix Phonics PLUS App is designed for kids aged 5+ and older children who need extra support with reading and spelling. It's perfect for building advanced phonics skills while keeping learning fun and engaging.",
     features: [
-      "Advanced Skills: Master digraphs, consonant blends, magic 'e', and tricky words.",
-      "Huge Library: Access thousands of words and engaging stories for endless practice.",
-      "Fluency Focus: Comprehensive blending and segmenting tools to turn readers into fluent speakers."
+      { type: 'heading', text: 'What Your Child Will Master' },
+      { type: 'item', text: 'Digraphs, consonant blends, magic "e", tricky words, and alternative spellings' },
+      { type: 'heading', text: 'What Makes UptoSix Phonics PLUS Special?' },
+      { type: 'item', text: 'Huge word database, 100% interactive, no ads, most comprehensive phonics app available' }
     ],
     icon: '/images/app-icons/app-phonics-plus.jpeg',
     screenshots: [
@@ -88,11 +92,13 @@ const appsData = [
     id: 3,
     name: 'UptoSix Letter Formation',
     subtitle: '',
-    description: "Master handwriting without the crutch of auto-correction. We believe in genuine progress. This app teaches kids how to write letters and numbers correctly using step-by-step animations, not just tracing.",
+    description: "Struggling to teach your child to write letters and numbers with correct formation? The UptoSix Letter Formation App makes learning to write fun, effective, and frustration-free.",
     features: [
-      "Unique Method: Uses fun \"Chicken, Giraffe, and Monkey\" groupings to make formation memorable.",
-      "True Learning: No auto-correct means kids develop actual muscle memory and fine motor skills.",
-      "Features: Includes 60 pre-writing practice pages and a freehand drawing canvas."
+      { type: 'heading', text: 'Why Choose UptoSix Letter Formation App?' },
+      { type: 'item', text: 'Engaging step-by-step animations, no auto-corrections for real learning' },
+      { type: 'item', text: 'Chicken, Giraffe, and Monkey letter classifications make learning memorable' },
+      { type: 'heading', text: 'Features' },
+      { type: 'item', text: '60 pre-writing practice pages and freehand drawing canvas' }
     ],
     icon: '/images/app-icons/app-letter-formation.jpeg',
     screenshots: [
@@ -106,11 +112,12 @@ const appsData = [
     id: 4,
     name: 'UptoSix Spell Board',
     subtitle: '',
-    description: "Boost spelling confidence through phonics-based play. Turn spelling drills into an interactive experience. This app moves beyond memorization by helping kids understand the sounds inside words.",
+    description: "Boost your child's spelling confidence with the UptoSix Spell Board App. Makes spelling learning fun, interactive, and effective for kids.",
     features: [
-      "Customizable: Adjustable difficulty levels suitable for beginners to advanced spellers.",
-      "Skill Building: Features dictation activities, phonics games, and progress tracking.",
-      "Safe Environment: A completely ad-free space focused on uninterrupted learning."
+      { type: 'heading', text: 'Why Choose UptoSix Spell Board App?' },
+      { type: 'item', text: 'Interactive learning like writing on paper with a pencil' },
+      { type: 'item', text: 'Phonics-focused approach breaks words into sounds for confident spelling' },
+      { type: 'item', text: 'Three levels for beginners to advanced spellers, ad-free and safe' }
     ],
     icon: '/images/app-icons/app-spell-board.jpeg',
     screenshots: [
@@ -181,7 +188,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Interactive Self-Learning<br />
               Phonics Apps for Kids
-            </h1>
+          </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
               Master reading and spelling with the synthetic phonics approach.<br />
               Made by teachers, trusted by parents.
@@ -189,22 +196,22 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
                 href="https://apps.apple.com/in/app/uptosix-phonics/id1617850099" 
-                target="_blank"
-                rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
-              >
-                <Image
+          >
+            <Image
                   src="/images/logos/app_store.png" 
                   alt="Download on App Store" 
                   width={200}
                   height={66}
                   className="h-16 w-auto"
                 />
-              </a>
-              <a
+          </a>
+          <a
                 href="https://play.google.com/store/apps/details?id=com.uptosix.phonics_01" 
-                target="_blank"
-                rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
               >
                 <Image
@@ -394,13 +401,23 @@ export default function Home() {
                   {selectedAppData.description}
                 </p>
                 {selectedAppData.features && (
-                  <ul className="space-y-3 text-left">
-                    {selectedAppData.features.map((feature, index) => (
-                      <li key={index} className="text-base text-gray-600 leading-relaxed flex items-start">
-                        <span className="text-purple-600 mr-2 font-bold">•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
+                  <ul className="space-y-4 text-left">
+                    {selectedAppData.features.map((feature, index) => {
+                      if (typeof feature === 'object' && feature.type === 'heading') {
+                        return (
+                          <li key={index} className="text-xl md:text-2xl font-bold text-gray-900 mt-6 first:mt-0">
+                            {feature.text}
+                          </li>
+                        );
+                      }
+                      const text = typeof feature === 'object' ? feature.text : feature;
+                      return (
+                        <li key={index} className="text-base text-gray-600 leading-relaxed flex items-start">
+                          <span className="text-purple-600 mr-2 font-bold mt-1.5">•</span>
+                          <span>{text}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               </motion.div>
